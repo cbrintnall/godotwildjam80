@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://8s7gnkn1nq68"]
+
+[ext_resource type="Script" uid="uid://dt2lc5cogov06" path="res://player.gd" id="1_8afob"]
+[ext_resource type="PackedScene" uid="uid://bx7qy67vxj560" path="res://scenes/player/player.blend" id="2_dovo2"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yldxj"]
+
+[node name="Player" type="CharacterBody3D"]
+physics_interpolation_mode = 1
+collision_layer = 2
+script = ExtResource("1_8afob")
+jump_height = 6.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_yldxj")
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(-0.99863, 0.052328, 0.000913476, 0.052336, 0.998477, 0.0174285, -8.72931e-08, 0.0174524, -0.999848, 0.0532184, 1.41409, 0.0177494)
+
+[node name="Camera3D" type="Camera3D" parent="Node3D"]
+unique_name_in_owner = true
+transform = Transform3D(1, -1.52278e-09, -1.32943e-11, -1.52347e-09, 1, 0, 2.64819e-11, 0, 1, 0, 0, 0)
+current = true
+
+[node name="player" parent="Node3D/Camera3D" instance=ExtResource("2_dovo2")]
+transform = Transform3D(-0.199726, 0.0104672, -1.74507e-08, 0.0104656, 0.199695, 0.00349048, 0.000182695, 0.0034857, -0.19997, 0.0322921, -0.40094, 0.0107536)
+
+[node name="Camera" parent="Node3D/Camera3D/player" index="2"]
+transform = Transform3D(-0.99863, 0.052328, 0.000913155, 0.052336, 0.998477, 0.0174285, 2.32772e-07, 0.0174524, -0.999848, 0, 1.91493, 0)
+
+[node name="AnimationPlayer" parent="Node3D/Camera3D/player" index="3"]
+autoplay = "Test_Animation"
+
+[node name="MeshRoot" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="MeshRoot"]
+transform = Transform3D(1, -4.44516e-10, -7.27596e-11, 4.21096e-09, 1, -1.16415e-09, 1.45519e-10, 0, 1, -8.51214e-10, 6.99313, -9.31323e-09)
+bone_name = "CameraBone"
+bone_idx = 1
+use_external_skeleton = true
+external_skeleton = NodePath("../../Node3D/Camera3D/player/Armature/Skeleton3D")
+
+[node name="CameraData" type="Node3D" parent="MeshRoot/BoneAttachment3D"]
+unique_name_in_owner = true
+
+[editable path="Node3D/Camera3D/player"]

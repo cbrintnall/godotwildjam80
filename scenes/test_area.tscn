@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://iu0l0iacc56u"]
+
+[ext_resource type="PackedScene" uid="uid://8s7gnkn1nq68" path="res://scenes/player/player.tscn" id="1_yldxj"]
+[ext_resource type="Texture2D" uid="uid://c8ejxpp0ngwoc" path="res://addons/kenney_prototype_textures/dark/texture_01.png" id="2_f0p7x"]
+[ext_resource type="Texture2D" uid="uid://b0ttbsoi6qgwt" path="res://addons/kenney_prototype_textures/dark/texture_06.png" id="3_vtm10"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vtm10"]
+albedo_texture = ExtResource("2_f0p7x")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0f05"]
+albedo_texture = ExtResource("3_vtm10")
+uv1_triplanar = true
+
+[node name="TestArea" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_yldxj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.200412, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.37532, 0)
+light_energy = 2.175
+omni_range = 18.173
+omni_attenuation = -0.921
+
+[node name="Geometry" type="Node3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+material_override = SubResource("StandardMaterial3D_vtm10")
+use_collision = true
+flip_faces = true
+size = Vector3(27, 10, 34)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0.5, 14)
+material_override = SubResource("StandardMaterial3D_a0f05")
+use_collision = true
+size = Vector3(5, 1, 6)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1.5, 14)
+material_override = SubResource("StandardMaterial3D_a0f05")
+use_collision = true
+size = Vector3(5, 3, 6)
