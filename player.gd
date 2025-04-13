@@ -97,7 +97,7 @@ func _process(delta: float) -> void:
   
   if not _was_on_floor and is_on_floor():
     #$FootstepsAudio.play()
-    _cvel += Vector3.UP
+    _cvel += Vector3.DOWN*3.0
   
   if velocity.length_squared() > 0.0 and is_on_floor():
     var speed = .01
@@ -122,7 +122,7 @@ func _process(delta: float) -> void:
   if _crouched:
     camera_height = _camera_base_position + Vector3.DOWN * (_crouched_collider_height-CROUCHED_CAMERA_OFFSET)
   
-  var cspr = Springs.spring(camera.position, camera_height, _cvel, delta*2.0, 20.0, 10.0)
+  var cspr = Springs.spring(camera.position, camera_height, _cvel, delta*2.0, 20.0, 4.0)
   camera.position = cspr["position"]
   _cvel = cspr["velocity"]
   _was_on_floor = is_on_floor()
