@@ -23,6 +23,7 @@ script = ExtResource("1_a0f05")
 
 [node name="Player" parent="." instance=ExtResource("1_yldxj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.200412, 0)
+push_force = null
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.37532, 0)
@@ -56,9 +57,3 @@ size = Vector3(5, 3, 6)
 
 [node name="Enemy" parent="." instance=ExtResource("5_xnrqy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.49684, 4.76837e-07, 13.7138)
-
-[node name="Enemy2" parent="." instance=ExtResource("5_xnrqy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.11514, -4.76837e-07, 13.626)
-
-[node name="Enemy3" parent="." instance=ExtResource("5_xnrqy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5608, -4.76837e-07, 15.1369)
