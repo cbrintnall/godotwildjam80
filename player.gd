@@ -50,7 +50,7 @@ var _enable_camera_animation_data := false
 #endregion
 
 #region bonez
-@onready var _skeleton = $Node3D/Camera3D/player/Armature/Skeleton3D
+@onready var _skeleton = $Node3D/Camera3D/Scalar/player/Player_Armature/Skeleton3D
 @onready var _camera_bone_idx = _skeleton.find_bone("CameraBone")
 #endregion
 
@@ -96,7 +96,11 @@ func _process(delta: float) -> void:
   var camera_height := _camera_base_position
   
   if not _was_on_floor and is_on_floor():
-    #$FootstepsAudio.play()
+    var sound = StreamData.new()
+    sound.parent = self
+    sound.stream = preload("res://audio/dirt-footstep01.ogg")
+    sound.pitch_variance = 0.1
+    AudioManager.play(sound)
     _cvel += Vector3.DOWN*3.0
   
   if velocity.length_squared() > 0.0 and is_on_floor():
@@ -114,8 +118,12 @@ func _process(delta: float) -> void:
     camera.v_offset = base*.05
     
     const threshold = -0.99
-    #if prev > threshold and base < threshold:
-      #$FootstepsAudio.play()
+    if prev > threshold and base < threshold:
+      var sound = StreamData.new()
+      sound.parent = self
+      sound.stream = preload("res://audio/dirt-footstep01.ogg")
+      sound.pitch_variance = 0.1
+      AudioManager.play(sound)
   else:
     camera.v_offset = move_toward(camera.v_offset, 0.0, 0.003)
   
@@ -155,8 +163,13 @@ func _physics_process(delta: float) -> void:
     speed *= SPRINT_SPEED
     
   if Input.is_action_pressed("jump") and is_on_floor():
-    #$JumpAudio.play()
+    var sound = StreamData.new()
+    sound.parent = self
+    sound.stream = preload("res://audio/jump01.ogg")
+    sound.pitch_variance = 0.1
+    AudioManager.play(sound)
     velocity.y = jump_height
+    _cvel += Vector3.UP*2.0
     _fall_time = 0.0
     
   #if Input.is_action_pressed("crouch") or (_crouched and crouch_casts.any(func(cast): return cast.is_colliding())):
