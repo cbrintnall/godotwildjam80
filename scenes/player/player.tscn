@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://8s7gnkn1nq68"]
+[gd_scene load_steps=7 format=3 uid="uid://8s7gnkn1nq68"]
 
 [ext_resource type="Script" uid="uid://dt2lc5cogov06" path="res://player.gd" id="1_8afob"]
-[ext_resource type="PackedScene" uid="uid://dwi42lww2bkhi" path="res://scenes/player/player.glb" id="2_dovo2"]
+[ext_resource type="PackedScene" uid="uid://2klosqoxmvv0" path="res://scenes/player/player.glb" id="2_dovo2"]
+[ext_resource type="Texture2D" uid="uid://bao7vub78bg8l" path="res://textures/WhiteCrosshairs/crosshair057.png" id="2_lvxji"]
+[ext_resource type="PackedScene" uid="uid://chh0v2gsvj14f" path="res://scenes/player/weapons/test-pistol.glb" id="3_gmlin"]
+[ext_resource type="Script" uid="uid://8mawjquyv7hw" path="res://scenes/player/test_pistol.gd" id="4_p47bc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yldxj"]
 
@@ -10,6 +13,24 @@ physics_interpolation_mode = 1
 collision_layer = 2
 script = ExtResource("1_8afob")
 jump_height = 6.0
+
+[node name="PlayerUI" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="PlayerUI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_lvxji")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -24,10 +45,38 @@ transform = Transform3D(1, -1.52278e-09, -1.32943e-11, -1.52347e-09, 1, 0, 2.648
 current = true
 
 [node name="Scalar" type="Node3D" parent="Node3D/Camera3D"]
-transform = Transform3D(0.2, 3.0488e-10, -4.2661e-12, -3.0488e-10, 0.2, -6.49633e-21, 4.2661e-12, 1.29996e-20, 0.2, 0, 0, 0)
+transform = Transform3D(-0.2, 0, -1.74846e-08, 0, 0.2, 0, 1.74846e-08, 0, -0.2, 0, -0.36, 0)
 
 [node name="player" parent="Node3D/Camera3D/Scalar" instance=ExtResource("2_dovo2")]
-transform = Transform3D(1, -1.5238e-09, 4.49134e-11, -1.5244e-09, 1, 1.86265e-09, -3.6863e-11, 0, 1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Node3D/Camera3D/Scalar/player/Player_Armature" index="0"]
+bones/9/rotation = Quaternion(-0.468145, 0.614972, 0.574646, -0.269132)
+bones/10/rotation = Quaternion(-1.87499e-09, -9.76826e-09, 0.193253, 0.981149)
+bones/11/rotation = Quaternion(-0.08671, 0.138741, -0.142425, 0.97619)
+bones/12/rotation = Quaternion(-0.540554, 0.183698, -0.238423, 0.785628)
+bones/13/rotation = Quaternion(-0.164699, -0.174357, 0.00920559, 0.970767)
+bones/14/rotation = Quaternion(0.0163395, -0.143203, 0.39193, 0.908635)
+
+[node name="AnimationPlayer" parent="Node3D/Camera3D/Scalar/player" index="1"]
+autoplay = "Idle_Pistol"
+
+[node name="TestPistol" type="Node3D" parent="Node3D/Camera3D/Scalar"]
+script = ExtResource("4_p47bc")
+idle_animation = "Idle_Pistol"
+shoot_animation = "Shoot_Pistol"
+
+[node name="test-pistol" parent="Node3D/Camera3D/Scalar/TestPistol" instance=ExtResource("3_gmlin")]
+transform = Transform3D(1, 2.21609e-17, 0, 1.33184e-16, 1, 2.1684e-19, 0, 0, 1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Node3D/Camera3D/Scalar/TestPistol/test-pistol/Armature" index="0"]
+bones/0/position = Vector3(-2.02268, -0.19126, 4.55405)
+bones/0/rotation = Quaternion(0.40171, -0.00473902, 0.0105422, 0.915694)
+
+[node name="TestPistol" parent="Node3D/Camera3D/Scalar/TestPistol/test-pistol/Armature/Skeleton3D" index="0"]
+transform = Transform3D(0.18005, -0.00416276, -4.42588e-05, 0.00279144, 0.122144, -0.132319, 0.00308843, 0.132283, 0.122176, -2.02268, -0.191261, 4.55405)
+
+[node name="AnimationPlayer" parent="Node3D/Camera3D/Scalar/TestPistol/test-pistol" index="1"]
+autoplay = "TestPistol_Idle"
 
 [node name="MeshRoot" type="Node3D" parent="."]
 unique_name_in_owner = true
@@ -43,3 +92,4 @@ external_skeleton = NodePath("../../Node3D/Camera3D/player/Armature/Skeleton3D")
 unique_name_in_owner = true
 
 [editable path="Node3D/Camera3D/Scalar/player"]
+[editable path="Node3D/Camera3D/Scalar/TestPistol/test-pistol"]

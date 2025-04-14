@@ -54,6 +54,10 @@ var _enable_camera_animation_data := false
 @onready var _camera_bone_idx = _skeleton.find_bone("CameraBone")
 #endregion
 
+#region animationz
+@onready var _animator = $Node3D/Camera3D/Scalar/player/AnimationPlayer
+#endregion
+
 static func get_player(tree):
   return tree.get_first_node_in_group("player")
 
@@ -69,6 +73,12 @@ func _unhandled_input(event: InputEvent) -> void:
     var add = MOUSE_SENS * event.relative
     rotate(Vector3.UP,-add.x)
     camera.rotate_x(-add.y)
+    
+  if event.is_action_pressed("activate"):
+    var wep = $Node3D/Camera3D/Scalar/TestPistol
+    wep.start_use()
+    _animator.stop()
+    _animator.play(wep.shoot_animation)
 
 func _process(delta: float) -> void:
   var cbonetrans: Transform3D = _skeleton.get_bone_global_pose(_camera_bone_idx)
