@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://iu0l0iacc56u"]
+
+[ext_resource type="Script" uid="uid://bb8fcpbv25jky" path="res://scenes/test_area.gd" id="1_a0f05"]
+[ext_resource type="PackedScene" uid="uid://8s7gnkn1nq68" path="res://scenes/player/player.tscn" id="1_yldxj"]
+[ext_resource type="Texture2D" uid="uid://c8ejxpp0ngwoc" path="res://addons/kenney_prototype_textures/dark/texture_01.png" id="2_f0p7x"]
+[ext_resource type="Texture2D" uid="uid://b0ttbsoi6qgwt" path="res://addons/kenney_prototype_textures/dark/texture_06.png" id="3_vtm10"]
+[ext_resource type="PackedScene" uid="uid://buw655oxcjh6y" path="res://scenes/enemy/enemy.tscn" id="5_xnrqy"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_vtm10"]
+vertices = PackedVector3Array(-3, 0.5, 10.5, -2.75, 0.5, 16.25, 13, 0.5, 16.25, -12.75, 0.5, -16.25, -12.75, 0.5, 10.5, 13, 0.5, -16.25, -12.75, 1.5, 11.5, -12.75, 1.5, 16.25, -9, 1.5, 16.25, -9, 1.5, 11.5, -8, 3.5, 11.5, -8, 3.5, 16.25, -4, 3.5, 16.25, -4, 3.5, 11.5, -7.75, 0.5, 11.75, -7.75, 0.5, 16.25, -4, 0.5, 16.25, -4, 0.5, 11.75)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(0, 4, 3), PackedInt32Array(2, 0, 5), PackedInt32Array(5, 0, 3), PackedInt32Array(9, 8, 6), PackedInt32Array(6, 8, 7), PackedInt32Array(13, 12, 10), PackedInt32Array(10, 12, 11), PackedInt32Array(17, 16, 14), PackedInt32Array(14, 16, 15)]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vtm10"]
+albedo_texture = ExtResource("2_f0p7x")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0f05"]
+albedo_texture = ExtResource("3_vtm10")
+uv1_triplanar = true
+
+[node name="TestArea" type="Node3D"]
+script = ExtResource("1_a0f05")
+
+[node name="Player" parent="." instance=ExtResource("1_yldxj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.200412, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.37532, 0)
+light_energy = 2.175
+omni_range = 18.173
+omni_attenuation = -0.921
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_vtm10")
+
+[node name="Geometry" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+material_override = SubResource("StandardMaterial3D_vtm10")
+use_collision = true
+flip_faces = true
+size = Vector3(27, 10, 34)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D/Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0.5, 14)
+material_override = SubResource("StandardMaterial3D_a0f05")
+use_collision = true
+size = Vector3(5, 1, 6)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="NavigationRegion3D/Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1.5, 14)
+material_override = SubResource("StandardMaterial3D_a0f05")
+use_collision = true
+size = Vector3(5, 3, 6)
+
+[node name="Enemy" parent="." instance=ExtResource("5_xnrqy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.49684, 4.76837e-07, 13.7138)
+
+[node name="Enemy2" parent="." instance=ExtResource("5_xnrqy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.11514, -4.76837e-07, 13.626)
+
+[node name="Enemy3" parent="." instance=ExtResource("5_xnrqy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5608, -4.76837e-07, 15.1369)
+
+[connection signal="ready" from="." to="." method="_on_ready"]

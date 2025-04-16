@@ -13,12 +13,26 @@ const CROUCH_MULT = 0.1
 #@onready var point_cast = %DistanceCast
 #@onready var crouch_casts = %CrouchCasts.get_children().filter(func(child): return child is RayCast3D)
 @onready var camera := %Camera3D
+@onready var ui := $PlayerUI
 #@onready var main_cast := %MainCast
 
 @export var jump_height := 50.0
 @export var push_force := 3.0
 
 var input_dir: Vector2
+
+var look_point:
+  get:
+    if %LookCast.is_colliding():
+      return %LookCast.get_collision_point()
+    return camera.global_position + %LookCast.target_position
+    
+var look_object:
+  get:
+    if %LookCast.is_colliding():
+      return %LookCast.get_collider()
+    return null
+
 var looking:
   get:
     return -camera.global_basis.z
@@ -58,11 +72,9 @@ var _enable_camera_animation_data := false
 @onready var _animator = $Node3D/Camera3D/Scalar/player/AnimationPlayer
 #endregion
 
-static func get_player(tree):
-  return tree.get_first_node_in_group("player")
-
 func _ready() -> void:
   add_to_group("player")
+  Find.player = self
   Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
   _camera_base_position = camera.position
   #for cast in crouch_casts:
@@ -75,10 +87,8 @@ func _unhandled_input(event: InputEvent) -> void:
     camera.rotate_x(-add.y)
     
   if event.is_action_pressed("activate"):
-    var wep = $Node3D/Camera3D/Scalar/TestPistol
+    var wep = $Node3D/Camera3D/Scalar/revolver
     wep.start_use()
-    _animator.stop()
-    _animator.play(wep.shoot_animation)
 
 func _process(delta: float) -> void:
   var cbonetrans: Transform3D = _skeleton.get_bone_global_pose(_camera_bone_idx)

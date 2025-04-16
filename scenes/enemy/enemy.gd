@@ -1,8 +1,12 @@
 extends CharacterBody3D
 
 @onready var nav_agent = $NavigationAgent3D
+@onready var health = $Health
 
 var SPEED = 3.0
+
+func _ready() -> void:
+  health.died.connect(queue_free)
 
 func _physics_process(delta: float) -> void:
   var current_location = global_transform.origin
@@ -11,6 +15,8 @@ func _physics_process(delta: float) -> void:
   
   nav_agent.set_velocity(new_velocity)
   
+func on_take_damage(data: Dictionary):
+  health.modify(data["amount"])
 
 func update_target_location(target_location):
   nav_agent.target_position = target_location

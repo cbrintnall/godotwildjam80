@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cp7pm3nbuqqht"]
+
+[ext_resource type="Script" uid="uid://bo31bussqfufh" path="res://scenes/bullet.gd" id="1_fvo7p"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0owmy"]
+radius = 0.2
+
+[node name="Bullet" type="Node3D"]
+script = ExtResource("1_fvo7p")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+radius = 0.1
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="."]
+shape = SubResource("SphereShape3D_0owmy")
+target_position = Vector3(0, 0, -0.2)

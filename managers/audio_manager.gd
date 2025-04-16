@@ -8,6 +8,14 @@ func _ready():
     _players.push_back(AudioStreamPlayer3D.new())
     add_child(_players[-1])
     
+func playd(data: Dictionary):
+  var stream_data = StreamData.new()
+  stream_data.stream = data["stream"]
+  stream_data.pitch_variance = data.get("pitch_variance", 0.0)
+  stream_data.parent = data.get("parent")
+  stream_data.location = data.get("location")
+  play(stream_data)
+    
 func play(data: StreamData):
   var player : AudioStreamPlayer3D
   if len(_players) > 0:
