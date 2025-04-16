@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 @onready var nav_agent = $NavigationAgent3D
 @onready var health = $Health
+@export var animator: AnimationPlayer
 
 var SPEED = 3.0
 
@@ -14,6 +15,8 @@ func _physics_process(delta: float) -> void:
   var new_velocity = (next_location - current_location).normalized() * SPEED
   
   nav_agent.set_velocity(new_velocity)
+  look_at(next_location)
+  start_run_animation()
   
 func on_take_damage(data: Dictionary):
   health.modify(data["amount"])
@@ -29,3 +32,7 @@ func _on_navigation_agent_3d_target_reached():
 func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
   velocity = velocity.move_toward(safe_velocity, .25)
   move_and_slide()
+
+func start_run_animation():
+  if animator and animator.current_animation != "run":
+    animator.play("run")

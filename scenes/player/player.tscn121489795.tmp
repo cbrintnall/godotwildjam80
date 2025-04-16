@@ -81,7 +81,7 @@ target_position = Vector3(0, 0, -100)
 transform = Transform3D(-0.2, 0, -1.74846e-08, 0, 0.2, 0, 1.74846e-08, 0, -0.2, 0, -0.36, 0)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Node3D/Camera3D/Scalar"]
-transform = Transform3D(3.8655e-07, -2.81376e-07, -1, -1, 1.2127e-07, -3.93889e-07, 1.2127e-07, 1, -2.60421e-07, -1.88437, 0.567995, 5.78117)
+transform = Transform3D(6.16652e-08, 1, -3.0268e-09, -1, 3.18629e-08, -3.82529e-07, -3.82529e-07, 3.0268e-09, 1, 1.82543, 0.567995, -0.00625043)
 bone_name = "Barrel"
 bone_idx = 2
 use_external_skeleton = true
@@ -96,11 +96,6 @@ script = ExtResource("5_75vfm")
 barrel = NodePath("../BoneAttachment3D/BarrelMarker")
 animator = NodePath("AnimationPlayer")
 shoot_sound = ExtResource("6_0owmy")
-
-[node name="Skeleton3D" parent="Node3D/Camera3D/Scalar/revolver/CrystalRevolver_Armature" index="0"]
-bones/0/position = Vector3(-1.88169, 0.0554845, 3.73468)
-bones/0/rotation = Quaternion(0.114743, -0.697735, -0.114743, 0.697735)
-bones/0/scale = Vector3(1, 1, 1)
 
 [node name="AnimationPlayer" parent="Node3D/Camera3D/Scalar/revolver" index="1"]
 autoplay = "Idle"
