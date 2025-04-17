@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dxya7a302wxe3"]
+
+[ext_resource type="Texture2D" uid="uid://b1iw74cspu8hn" path="res://scenes/player/weapons/revolver_baba32-1x.png" id="1_j0dm2"]
+
+[resource]
+resource_name = "ChamberGlass"
+transparency = 4
+cull_mode = 2
+albedo_color = Color(1, 1, 1, 0.182456)
+albedo_texture = ExtResource("1_j0dm2")
+roughness = 0.5
+texture_filter = 2

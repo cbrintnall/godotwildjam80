@@ -1833,6 +1833,27 @@ _subresources={
 "slice_99/start_frame": 0,
 "slices/amount": 0
 }
+},
+"materials": {
+"ChamberGlass": {
+"use_external/enabled": true,
+"use_external/path": "res://scenes/player/weapons/ChamberGlass.tres"
+},
+"Crystal": {
+"use_external/enabled": true,
+"use_external/path": "res://scenes/player/weapons/Crystal.tres"
+},
+"Revolver": {
+"use_external/enabled": true,
+"use_external/path": "res://scenes/player/weapons/Revolver.tres"
+}
+},
+"nodes": {
+"PATH:AnimationPlayer": {
+"import_tracks/position": 0,
+"import_tracks/rotation": 0,
+"import_tracks/scale": 0
+}
 }
 }
 gltf/naming_version=1

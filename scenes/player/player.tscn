@@ -1,13 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://8s7gnkn1nq68"]
+[gd_scene load_steps=14 format=3 uid="uid://8s7gnkn1nq68"]
 
 [ext_resource type="Script" uid="uid://dt2lc5cogov06" path="res://player.gd" id="1_8afob"]
 [ext_resource type="PackedScene" uid="uid://2klosqoxmvv0" path="res://scenes/player/player.glb" id="2_dovo2"]
 [ext_resource type="Texture2D" uid="uid://bao7vub78bg8l" path="res://textures/WhiteCrosshairs/crosshair057.png" id="2_lvxji"]
 [ext_resource type="Script" uid="uid://641ueqwt1hr" path="res://scenes/player/player_ui.gd" id="2_qek5x"]
 [ext_resource type="PackedScene" uid="uid://c6wrht4tpfm83" path="res://mechanics/interact/interact_ray.tscn" id="3_p47bc"]
+[ext_resource type="Script" uid="uid://bykijvx7m61g5" path="res://scenes/player/game_cam.gd" id="4_5gtgg"]
+[ext_resource type="Environment" uid="uid://b35w0orshbuju" path="res://data/first_person_environment.tres" id="4_h17s1"]
 [ext_resource type="Script" uid="uid://6iwg4wwqnjg2" path="res://scenes/player/weapon.gd" id="5_75vfm"]
 [ext_resource type="PackedScene" uid="uid://y0orbfjxelwe" path="res://scenes/player/weapons/revolver.glb" id="5_p47bc"]
 [ext_resource type="AudioStream" uid="uid://be8nmf5ek0xd8" path="res://audio/pistol-shoot.ogg" id="6_0owmy"]
+[ext_resource type="Material" uid="uid://cotydyun2xij" path="res://scenes/player/weapons/Crystal.tres" id="11_je7p5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0owmy"]
 font_size = 64
@@ -67,7 +70,9 @@ transform = Transform3D(-0.999998, 0, 0.00174537, 0, 1, 0, -0.00174537, 0, -0.99
 [node name="Camera3D" type="Camera3D" parent="Node3D"]
 unique_name_in_owner = true
 transform = Transform3D(1, -1.52278e-09, -1.32943e-11, -1.52347e-09, 1, 0, 2.64819e-11, 0, 1, 0, 0, 0)
+environment = ExtResource("4_h17s1")
 current = true
+script = ExtResource("4_5gtgg")
 
 [node name="InteractRay2" parent="Node3D/Camera3D" instance=ExtResource("3_p47bc")]
 transform = Transform3D(1, -2.19581e-17, 0, -2.19585e-17, 1, 2.1684e-19, 0, 0, 1, 0, 0, 0)
@@ -81,7 +86,7 @@ target_position = Vector3(0, 0, -100)
 transform = Transform3D(-0.2, 0, -1.74846e-08, 0, 0.2, 0, 1.74846e-08, 0, -0.2, 0, -0.36, 0)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Node3D/Camera3D/Scalar"]
-transform = Transform3D(3.8655e-07, -2.81376e-07, -1, -1, 1.2127e-07, -3.93889e-07, 1.2127e-07, 1, -2.60421e-07, -1.88437, 0.567995, 5.78117)
+transform = Transform3D(-2.85591e-08, 1, -3.25963e-09, -1, -2.85592e-08, -3.82529e-07, -3.82529e-07, 3.25963e-09, 1, 3.92455, 1.25495, -0.0062503)
 bone_name = "Barrel"
 bone_idx = 2
 use_external_skeleton = true
@@ -89,21 +94,6 @@ external_skeleton = NodePath("../revolver/CrystalRevolver_Armature/Skeleton3D")
 
 [node name="BarrelMarker" type="Marker3D" parent="Node3D/Camera3D/Scalar/BoneAttachment3D"]
 transform = Transform3D(0.999998, 1.52347e-09, 0.00174528, -1.52347e-09, 1, -2.65902e-12, -0.00174528, 1.34441e-16, 0.999998, 0, 0, 0)
-
-[node name="revolver" parent="Node3D/Camera3D/Scalar" node_paths=PackedStringArray("barrel", "animator") instance=ExtResource("5_p47bc")]
-transform = Transform3D(1, 2.21906e-17, -2.32831e-10, 2.44236e-16, 1, 2.1684e-19, 2.32831e-10, -2.1684e-19, 1, -0.00268195, 0, -0.00625054)
-script = ExtResource("5_75vfm")
-barrel = NodePath("../BoneAttachment3D/BarrelMarker")
-animator = NodePath("AnimationPlayer")
-shoot_sound = ExtResource("6_0owmy")
-
-[node name="Skeleton3D" parent="Node3D/Camera3D/Scalar/revolver/CrystalRevolver_Armature" index="0"]
-bones/0/position = Vector3(-1.88169, 0.0554845, 3.73468)
-bones/0/rotation = Quaternion(0.114743, -0.697735, -0.114743, 0.697735)
-bones/0/scale = Vector3(1, 1, 1)
-
-[node name="AnimationPlayer" parent="Node3D/Camera3D/Scalar/revolver" index="1"]
-autoplay = "Idle"
 
 [node name="player" parent="Node3D/Camera3D/Scalar" instance=ExtResource("2_dovo2")]
 
@@ -113,18 +103,19 @@ visible = false
 [node name="AnimationPlayer" parent="Node3D/Camera3D/Scalar/player" index="1"]
 autoplay = "Idle_Pistol"
 
-[node name="MeshRoot" type="Node3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+[node name="revolver" parent="Node3D/Camera3D/Scalar" node_paths=PackedStringArray("barrel", "animator") instance=ExtResource("5_p47bc")]
+transform = Transform3D(1, -5.77303e-16, -2.32831e-10, 5.77303e-16, 1, 8.67362e-19, 2.32831e-10, -8.67362e-19, 1, -0.00268195, 0, -0.00625054)
+script = ExtResource("5_75vfm")
+barrel = NodePath("../BoneAttachment3D/BarrelMarker")
+animator = NodePath("AnimationPlayer")
+shoot_sound = ExtResource("6_0owmy")
+damage = 3
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="MeshRoot"]
-transform = Transform3D(1, -4.44516e-10, -7.27596e-11, 4.21096e-09, 1, -1.16415e-09, 1.45519e-10, 0, 1, -8.51214e-10, 6.99313, -9.31323e-09)
-bone_name = "CameraBone"
-use_external_skeleton = true
-external_skeleton = NodePath("../../Node3D/Camera3D/player/Armature/Skeleton3D")
+[node name="Crystal" parent="Node3D/Camera3D/Scalar/revolver/CrystalRevolver_Armature/Skeleton3D" index="1"]
+material_override = ExtResource("11_je7p5")
 
-[node name="CameraData" type="Node3D" parent="MeshRoot/BoneAttachment3D"]
-unique_name_in_owner = true
+[node name="AnimationPlayer" parent="Node3D/Camera3D/Scalar/revolver" index="1"]
+autoplay = "Idle"
 
-[editable path="Node3D/Camera3D/Scalar/revolver"]
 [editable path="Node3D/Camera3D/Scalar/player"]
+[editable path="Node3D/Camera3D/Scalar/revolver"]

@@ -14,12 +14,16 @@ const CROUCH_MULT = 0.1
 #@onready var crouch_casts = %CrouchCasts.get_children().filter(func(child): return child is RayCast3D)
 @onready var camera := %Camera3D
 @onready var ui := $PlayerUI
+@onready var weapon := $Node3D/Camera3D/Scalar/revolver
 #@onready var main_cast := %MainCast
 
 @export var jump_height := 50.0
 @export var push_force := 3.0
 
 var input_dir: Vector2
+var stats = {
+  "crit_chance": 0.1
+}
 
 var look_point:
   get:
@@ -53,11 +57,20 @@ var _crouched_collider_height := .99
 var _camera_base_position: Vector3
 var _crouched := true
 var _target_lean_amt := 0.0
-var _lean_vel: float
-var _cvel: Vector3
 var _head_offset := 0.0
 var _was_on_floor := false
 var _sprint_held := false
+
+#region input
+var _time_since_use_pressed := 0.0
+var _use_buffered := false
+#endregion
+
+#region velocities
+var _lean_vel: float
+var _cvel: Vector3
+var _gvel: Vector3
+#endregion
 
 #region camera_stuff
 var _enable_camera_animation_data := false
@@ -86,9 +99,13 @@ func _unhandled_input(event: InputEvent) -> void:
     rotate(Vector3.UP,-add.x)
     camera.rotate_x(-add.y)
     
+    if weapon:
+      weapon.rotation_degrees.y += event.relative.x*.01
+      weapon.rotation_degrees.x += event.relative.y*.01
+    
   if event.is_action_pressed("activate"):
-    var wep = $Node3D/Camera3D/Scalar/revolver
-    wep.start_use()
+    _time_since_use_pressed = Time.get_ticks_msec()
+    _use_buffered = true
 
 func _process(delta: float) -> void:
   var cbonetrans: Transform3D = _skeleton.get_bone_global_pose(_camera_bone_idx)
@@ -114,6 +131,10 @@ func _process(delta: float) -> void:
   _lean_vel = spr["velocity"]
   
   var camera_height := _camera_base_position
+  if Time.get_ticks_msec() - _time_since_use_pressed < 250.0 and _use_buffered:
+    var wep = $Node3D/Camera3D/Scalar/revolver
+    var success = wep.start_use()
+    _use_buffered = not success
   
   if not _was_on_floor and is_on_floor():
     var sound = StreamData.new()
@@ -154,6 +175,11 @@ func _process(delta: float) -> void:
   camera.position = cspr["position"]
   _cvel = cspr["velocity"]
   _was_on_floor = is_on_floor()
+  
+  if weapon:
+    var res = Springs.spring(weapon.rotation_degrees, Vector3.ZERO, _gvel, delta*2.0, 20.0, 3.0)
+    weapon.rotation_degrees = res["position"]
+    _gvel = res["velocity"]
 
 func _head_bob(x:float):
   #return sin(x+sinh(cos(x/2.0))*4.0)

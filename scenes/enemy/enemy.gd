@@ -19,7 +19,19 @@ func _physics_process(delta: float) -> void:
   start_run_animation()
   
 func on_take_damage(data: Dictionary):
-  health.modify(data["amount"])
+  var final_data = health.modify(data)
+  
+  var pt = data.get("point")
+  if pt:
+    var text = preload("res://scenes/ui/floating_text.gd").new()
+    get_tree().root.add_child(text)
+    text.global_position = pt
+    text.text = "%d" % final_data["final"]
+    if data.get("crit",false):
+      text.modulate = Color.YELLOW
+      AudioManager.playd({
+        "stream": preload("res://audio/hit-crit.ogg")
+      })
 
 func update_target_location(target_location):
   nav_agent.target_position = target_location
@@ -27,7 +39,6 @@ func update_target_location(target_location):
   
 func _on_navigation_agent_3d_target_reached():
   print("in range")
-
 
 func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
   velocity = velocity.move_toward(safe_velocity, .25)

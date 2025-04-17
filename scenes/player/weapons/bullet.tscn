@@ -1,9 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://cp7pm3nbuqqht"]
+[gd_scene load_steps=5 format=3 uid="uid://cp7pm3nbuqqht"]
 
 [ext_resource type="Script" uid="uid://bo31bussqfufh" path="res://scenes/bullet.gd" id="1_fvo7p"]
+[ext_resource type="Script" uid="uid://bqflf4vw8mem1" path="res://addons/lines_and_trails_3d/trail_3d.gd" id="2_q7tbw"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0owmy"]
 radius = 0.2
+
+[sub_resource type="Curve" id="Curve_q7tbw"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.25782, 0.0, 0, 0]
+point_count = 2
 
 [node name="Bullet" type="Node3D"]
 script = ExtResource("1_fvo7p")
@@ -14,3 +19,12 @@ radius = 0.1
 [node name="ShapeCast3D" type="ShapeCast3D" parent="."]
 shape = SubResource("SphereShape3D_0owmy")
 target_position = Vector3(0, 0, -0.2)
+
+[node name="Trail3D" type="MeshInstance3D" parent="."]
+process_priority = 9999
+script = ExtResource("2_q7tbw")
+limit_mode = 1
+length_limit = 5.0
+width = 0.15
+width_curve = SubResource("Curve_q7tbw")
+metadata/_custom_type_script = "uid://bqflf4vw8mem1"

@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://ki0osllwglmx"]
+
+[ext_resource type="Texture2D" uid="uid://b1iw74cspu8hn" path="res://scenes/player/weapons/revolver_baba32-1x.png" id="1_oc4xe"]
+
+[resource]
+resource_name = "Revolver"
+cull_mode = 2
+albedo_texture = ExtResource("1_oc4xe")
+roughness = 0.5
+texture_filter = 2
