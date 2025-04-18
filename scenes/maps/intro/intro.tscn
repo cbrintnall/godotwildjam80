@@ -1,0 +1,104 @@
+[gd_scene load_steps=14 format=3 uid="uid://ddh26ujlgjd6o"]
+
+[ext_resource type="PackedScene" uid="uid://kpneoxjywuwo" path="res://scenes/maps/intro/intro.blend" id="1_ieuhs"]
+[ext_resource type="PackedScene" uid="uid://8s7gnkn1nq68" path="res://scenes/player/player.tscn" id="2_2u7w1"]
+[ext_resource type="AudioStream" uid="uid://vyiq5u7rcmvc" path="res://audio/ambience/forest.ogg" id="3_2d3vu"]
+[ext_resource type="ArrayMesh" uid="uid://5pidmafqdnux" path="res://scenes/maps/universal/leaf_mesh.tres" id="5_4u751"]
+[ext_resource type="PackedScene" uid="uid://dorv14osa8lvx" path="res://scenes/maps/universal/scenes/cauliplant.tscn" id="5_sqrrk"]
+
+[sub_resource type="Environment" id="Environment_2u7w1"]
+background_energy_multiplier = 0.0
+ambient_light_source = 2
+ambient_light_energy = 0.0
+fog_mode = 1
+fog_light_color = Color(0.570847, 0.532471, 0.606662, 1)
+fog_density = 1.066
+fog_depth_curve = 0.784584
+
+[sub_resource type="Curve" id="Curve_sqrrk"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.107143, 360), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4u751"]
+curve = SubResource("Curve_sqrrk")
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_0gwnl"]
+
+[sub_resource type="Curve" id="Curve_yybjh"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_sqrrk"]
+curve = SubResource("Curve_yybjh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0gwnl"]
+emission_shape = 3
+emission_box_extents = Vector3(23.41, 1, 18.21)
+angle_min = 1.07288e-05
+angle_max = 720.0
+angle_curve = SubResource("CurveTexture_4u751")
+spread = 180.0
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = 50.0
+directional_velocity_min = 0.0999839
+directional_velocity_max = 0.999984
+directional_velocity_curve = SubResource("CurveXYZTexture_0gwnl")
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 9.49949e-08
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = 0.999978
+gravity = Vector3(0, -1, 0)
+radial_accel_min = -2.23517e-06
+radial_accel_max = 0.999998
+tangential_accel_min = -1.0
+tangential_accel_max = 0.999998
+scale_curve = SubResource("CurveTexture_sqrrk")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_sqrrk"]
+radius = 41.2964
+
+[node name="Intro" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2u7w1")
+
+[node name="intro" parent="." instance=ExtResource("1_ieuhs")]
+
+[node name="Player" parent="." instance=ExtResource("2_2u7w1")]
+transform = Transform3D(0.0725941, 0, 0.997362, 0, 1, 0, -0.997362, 0, 0.0725941, -14.5582, 0, 3.52157)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_2d3vu")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.01236, 4.5211, -8.0433)
+visible = false
+light_color = Color(0.839852, 0.660333, 0.423461, 1)
+light_energy = 16.0
+omni_range = 39.0
+
+[node name="Leaves" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.768886, 0, -0.639385, 0, 1, 0, 0.639385, 0, 0.768886, 7.44947, 13.5457, -7.13288)
+amount = 50
+lifetime = 15.0
+fixed_fps = 15
+interpolate = false
+process_material = SubResource("ParticleProcessMaterial_0gwnl")
+draw_pass_1 = ExtResource("5_4u751")
+
+[node name="Cauliplant2" parent="." instance=ExtResource("5_sqrrk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6889, -0.0681948, -20.3482)
+
+[node name="Cauliplant" parent="." instance=ExtResource("5_sqrrk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.01874, -0.0416907, 4.25224)
+
+[node name="ReverbZone" type="Area3D" parent="."]
+reverb_bus_enabled = true
+reverb_bus_amount = 1.0
+reverb_bus_uniformity = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ReverbZone"]
+shape = SubResource("SphereShape3D_sqrrk")
+
+[editable path="intro"]

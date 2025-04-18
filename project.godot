@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="godotwildjam80"
-run/main_scene="uid://iu0l0iacc56u"
+run/main_scene="uid://ddh26ujlgjd6o"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -28,9 +28,13 @@ directories/dtl_directory={
 "test_timeline": "res://dialogue/test_timeline.dtl"
 }
 
+[display]
+
+window/size/mode=2
+
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/lines_and_trails_3d/plugin.cfg")
+enabled=PackedStringArray("res://addons/IVX_VertexColorImportSwapper/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/lines_and_trails_3d/plugin.cfg")
 
 [input]
 

@@ -1,4 +1,4 @@
-extends CollisionObject3D
+extends Area3D
 class_name Interactable
 
 signal interacted(body)
@@ -8,7 +8,7 @@ signal interacted(body)
 @export var icon_name = ""
 
 func interact(body):
-	if not enabled:
-		return
-	
-	interacted.emit(body)
+  if not enabled:
+    return
+  
+  interacted.emit(body)

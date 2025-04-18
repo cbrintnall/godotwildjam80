@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bu6h0qeg715c6"]
+
+[ext_resource type="PackedScene" uid="uid://y0orbfjxelwe" path="res://scenes/player/weapons/revolver.glb" id="1_d06ug"]
+[ext_resource type="Script" uid="uid://6iwg4wwqnjg2" path="res://scenes/player/weapon.gd" id="2_fmgpc"]
+[ext_resource type="AudioStream" uid="uid://be8nmf5ek0xd8" path="res://audio/pistol-shoot.ogg" id="3_4kfxi"]
+[ext_resource type="Material" uid="uid://cotydyun2xij" path="res://scenes/player/weapons/Crystal.tres" id="4_np501"]
+
+[node name="Revolver" type="Node3D"]
+
+[node name="revolver" parent="." node_paths=PackedStringArray("barrel", "animator") instance=ExtResource("1_d06ug")]
+transform = Transform3D(1, -5.32924e-16, -4.65661e-10, 7.99347e-16, 1, 1.30104e-18, 4.65661e-10, -1.0842e-18, 1, -0.00268195, 0, -0.00625054)
+script = ExtResource("2_fmgpc")
+barrel = NodePath("")
+animator = NodePath("AnimationPlayer")
+shoot_sound = ExtResource("3_4kfxi")
+damage = 3
+
+[node name="Crystal" parent="revolver/CrystalRevolver_Armature/Skeleton3D" index="1"]
+material_override = ExtResource("4_np501")
+
+[node name="AnimationPlayer" parent="revolver" index="1"]
+autoplay = "Idle"
+
+[editable path="revolver"]

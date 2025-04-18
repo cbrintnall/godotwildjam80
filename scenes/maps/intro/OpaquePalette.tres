@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bdisrkghkxhre"]
+
+[ext_resource type="Texture2D" uid="uid://b8lclgwh8ebat" path="res://textures/baba32-1x.png" id="1_m1tk4"]
+
+[resource]
+resource_name = "OpaquePalette"
+shading_mode = 2
+diffuse_mode = 3
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_m1tk4")
+metallic_specular = 0.0
+roughness = 0.5
+texture_filter = 2
+disable_receive_shadows = true

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ItemRef" load_steps=2 format=3 uid="uid://blg5dwc3pv7sw"]
+
+[ext_resource type="Script" uid="uid://t5tcg7ifyskh" path="res://scenes/data/item_ref.gd" id="1_3a5g1"]
+
+[resource]
+script = ExtResource("1_3a5g1")
+display_name = "Caulipowder"
+metadata/_custom_type_script = "uid://t5tcg7ifyskh"

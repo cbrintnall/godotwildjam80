@@ -1,0 +1,20 @@
+[gd_resource type="ArrayMesh" load_steps=2 format=3 uid="uid://5pidmafqdnux"]
+
+[ext_resource type="Material" uid="uid://cs8v4s6gol0v6" path="res://scenes/maps/intro/Particles_OpaquePaletteNoCull.tres" id="1_1ka8c"]
+
+[resource]
+resource_name = "leaf_Plane"
+_surfaces = [{
+"aabb": AABB(-0.302691, 0, -0.549185, 0.605381, 1e-05, 1.09837),
+"attribute_data": PackedByteArray(94, 88, 32, 123, 161, 94, 222, 116, 161, 94, 32, 123, 94, 88, 222, 116),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"material": ExtResource("1_1ka8c"),
+"name": "OpaqueNoCull",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(255, 127, 0, 0, 255, 255, 168, 202, 255, 127, 0, 0, 0, 0, 168, 202, 255, 255, 0, 0, 255, 127, 168, 202, 0, 0, 0, 0, 255, 127, 168, 202, 86, 221, 173, 58, 86, 221, 173, 58, 86, 221, 173, 58, 86, 221, 173, 58)
+}]
+blend_shape_mode = 0

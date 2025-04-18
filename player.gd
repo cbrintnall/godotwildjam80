@@ -14,7 +14,7 @@ const CROUCH_MULT = 0.1
 #@onready var crouch_casts = %CrouchCasts.get_children().filter(func(child): return child is RayCast3D)
 @onready var camera := %Camera3D
 @onready var ui := $PlayerUI
-@onready var weapon := $Node3D/Camera3D/Scalar/revolver
+@onready var inventory := $Inventory as Inventory
 #@onready var main_cast := %MainCast
 
 @export var jump_height := 50.0
@@ -61,15 +61,9 @@ var _head_offset := 0.0
 var _was_on_floor := false
 var _sprint_held := false
 
-#region input
-var _time_since_use_pressed := 0.0
-var _use_buffered := false
-#endregion
-
 #region velocities
 var _lean_vel: float
 var _cvel: Vector3
-var _gvel: Vector3
 #endregion
 
 #region camera_stuff
@@ -98,14 +92,6 @@ func _unhandled_input(event: InputEvent) -> void:
     var add = MOUSE_SENS * event.relative
     rotate(Vector3.UP,-add.x)
     camera.rotate_x(-add.y)
-    
-    if weapon:
-      weapon.rotation_degrees.y += event.relative.x*.01
-      weapon.rotation_degrees.x += event.relative.y*.01
-    
-  if event.is_action_pressed("activate"):
-    _time_since_use_pressed = Time.get_ticks_msec()
-    _use_buffered = true
 
 func _process(delta: float) -> void:
   var cbonetrans: Transform3D = _skeleton.get_bone_global_pose(_camera_bone_idx)
@@ -131,20 +117,18 @@ func _process(delta: float) -> void:
   _lean_vel = spr["velocity"]
   
   var camera_height := _camera_base_position
-  if Time.get_ticks_msec() - _time_since_use_pressed < 250.0 and _use_buffered:
-    var wep = $Node3D/Camera3D/Scalar/revolver
-    var success = wep.start_use()
-    _use_buffered = not success
   
   if not _was_on_floor and is_on_floor():
     var sound = StreamData.new()
     sound.parent = self
-    sound.stream = preload("res://audio/dirt-footstep01.ogg")
+    sound.stream = preload("res://audio/jump-land.ogg")
     sound.pitch_variance = 0.1
     AudioManager.play(sound)
     _cvel += Vector3.DOWN*3.0
   
-  if velocity.length_squared() > 0.0 and is_on_floor():
+  var walking = velocity.length_squared() > 0.0 and is_on_floor()
+  %WalkParticles.emitting = walking
+  if walking:
     var speed = .01
     if sprinting and not _crouched:
       speed *= SPRINT_SPEED*2.0
@@ -160,11 +144,12 @@ func _process(delta: float) -> void:
     
     const threshold = -0.99
     if prev > threshold and base < threshold:
-      var sound = StreamData.new()
-      sound.parent = self
-      sound.stream = preload("res://audio/dirt-footstep01.ogg")
-      sound.pitch_variance = 0.1
-      AudioManager.play(sound)
+      AudioManager.playd({
+        "stream":preload("res://audio/dirt-footstep01.ogg"),
+        "parent": self,
+        "pitch_variance": 0.1,
+        "volume": 0.4
+      })
   else:
     camera.v_offset = move_toward(camera.v_offset, 0.0, 0.003)
   
@@ -175,11 +160,6 @@ func _process(delta: float) -> void:
   camera.position = cspr["position"]
   _cvel = cspr["velocity"]
   _was_on_floor = is_on_floor()
-  
-  if weapon:
-    var res = Springs.spring(weapon.rotation_degrees, Vector3.ZERO, _gvel, delta*2.0, 20.0, 3.0)
-    weapon.rotation_degrees = res["position"]
-    _gvel = res["velocity"]
 
 func _head_bob(x:float):
   #return sin(x+sinh(cos(x/2.0))*4.0)
@@ -212,19 +192,12 @@ func _physics_process(delta: float) -> void:
     var sound = StreamData.new()
     sound.parent = self
     sound.stream = preload("res://audio/jump01.ogg")
-    sound.pitch_variance = 0.1
+    sound.pitch_variance = 0.3
+    sound.volume = 0.5
     AudioManager.play(sound)
     velocity.y = jump_height
     _cvel += Vector3.UP*2.0
     _fall_time = 0.0
-    
-  #if Input.is_action_pressed("crouch") or (_crouched and crouch_casts.any(func(cast): return cast.is_colliding())):
-    #if is_on_floor():
-      #$CollisionShape3D.shape.height = _crouched_collider_height
-      #_crouched = true
-  #else:
-    #$CollisionShape3D.shape.height = _base_collider_height
-    #_crouched = false
 
   if is_on_ceiling():
     velocity.y = -.01
@@ -234,11 +207,11 @@ func _physics_process(delta: float) -> void:
       
   if not is_on_floor():
     accel = 0.5
-    decel = 0.5
+    decel = 0.3
   
   var direction = camera.global_transform.basis.x * input_dir.x
   direction += camera.global_transform.basis.z * input_dir.y
-  var target_speed = max(velocity.length(), speed)
+  var target_speed = speed
   if direction:
     velocity.x = move_toward(velocity.x, direction.x * target_speed, accel)
     velocity.z = move_toward(velocity.z, direction.z * target_speed, accel)

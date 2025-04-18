@@ -16,6 +16,7 @@ func playd(data: Dictionary):
   stream_data.additional_pitch = data.get("pitch_additional", 0.0)
   stream_data.parent = data.get("parent")
   stream_data.location = data.get("location")
+  stream_data.volume = data.get("volume", 1.0)
   play(stream_data)
     
 func play(data: StreamData):
@@ -43,6 +44,7 @@ func play(data: StreamData):
         player.global_position = data.location
     player.finished.connect(_players.push_back.bind(player), CONNECT_ONE_SHOT)
     
+  player.volume_db = linear_to_db(data.volume)
   player.stream = data.stream
   player.pitch_scale = 1.0 + (randf()*data.pitch_variance) + data.additional_pitch
     

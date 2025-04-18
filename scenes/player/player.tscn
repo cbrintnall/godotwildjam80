@@ -1,27 +1,63 @@
-[gd_scene load_steps=14 format=3 uid="uid://8s7gnkn1nq68"]
+[gd_scene load_steps=16 format=3 uid="uid://8s7gnkn1nq68"]
 
 [ext_resource type="Script" uid="uid://dt2lc5cogov06" path="res://player.gd" id="1_8afob"]
 [ext_resource type="PackedScene" uid="uid://2klosqoxmvv0" path="res://scenes/player/player.glb" id="2_dovo2"]
+[ext_resource type="Script" uid="uid://bmyalhnpkv7bd" path="res://scenes/inventory.gd" id="2_je7p5"]
 [ext_resource type="Texture2D" uid="uid://bao7vub78bg8l" path="res://textures/WhiteCrosshairs/crosshair057.png" id="2_lvxji"]
 [ext_resource type="Script" uid="uid://641ueqwt1hr" path="res://scenes/player/player_ui.gd" id="2_qek5x"]
+[ext_resource type="Script" uid="uid://bg53qpxsynngb" path="res://scenes/player/player_weapon_manager.gd" id="3_fm80t"]
 [ext_resource type="PackedScene" uid="uid://c6wrht4tpfm83" path="res://mechanics/interact/interact_ray.tscn" id="3_p47bc"]
 [ext_resource type="Script" uid="uid://bykijvx7m61g5" path="res://scenes/player/game_cam.gd" id="4_5gtgg"]
-[ext_resource type="Environment" uid="uid://b35w0orshbuju" path="res://data/first_person_environment.tres" id="4_h17s1"]
-[ext_resource type="Script" uid="uid://6iwg4wwqnjg2" path="res://scenes/player/weapon.gd" id="5_75vfm"]
-[ext_resource type="PackedScene" uid="uid://y0orbfjxelwe" path="res://scenes/player/weapons/revolver.glb" id="5_p47bc"]
-[ext_resource type="AudioStream" uid="uid://be8nmf5ek0xd8" path="res://audio/pistol-shoot.ogg" id="6_0owmy"]
-[ext_resource type="Material" uid="uid://cotydyun2xij" path="res://scenes/player/weapons/Crystal.tres" id="11_je7p5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0owmy"]
 font_size = 64
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yldxj"]
 
+[sub_resource type="Curve" id="Curve_h17s1"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0678571, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.30553, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_je7p5"]
+curve = SubResource("Curve_h17s1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h17s1"]
+emission_shape = 1
+emission_sphere_radius = 0.5
+gravity = Vector3(0, -0.25, 0)
+scale_min = 0.8
+scale_max = 1.2
+scale_curve = SubResource("CurveTexture_je7p5")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h17s1"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 1, 1, 0.105882)
+
+[sub_resource type="SphereMesh" id="SphereMesh_je7p5"]
+material = SubResource("StandardMaterial3D_h17s1")
+radius = 0.1
+height = 0.2
+radial_segments = 8
+rings = 3
+
 [node name="Player" type="CharacterBody3D"]
 physics_interpolation_mode = 1
 collision_layer = 2
 script = ExtResource("1_8afob")
 jump_height = 6.0
+
+[node name="Inventory" type="Node" parent="."]
+script = ExtResource("2_je7p5")
+
+[node name="PlayerWeaponManager" type="Node" parent="."]
+script = ExtResource("3_fm80t")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.58999, 0)
+light_color = Color(0.886275, 0.756863, 0.466667, 1)
+light_energy = 16.0
+omni_range = 16.6247
 
 [node name="PlayerUI" type="CanvasLayer" parent="."]
 script = ExtResource("2_qek5x")
@@ -70,12 +106,13 @@ transform = Transform3D(-0.999998, 0, 0.00174537, 0, 1, 0, -0.00174537, 0, -0.99
 [node name="Camera3D" type="Camera3D" parent="Node3D"]
 unique_name_in_owner = true
 transform = Transform3D(1, -1.52278e-09, -1.32943e-11, -1.52347e-09, 1, 0, 2.64819e-11, 0, 1, 0, 0, 0)
-environment = ExtResource("4_h17s1")
 current = true
 script = ExtResource("4_5gtgg")
 
 [node name="InteractRay2" parent="Node3D/Camera3D" instance=ExtResource("3_p47bc")]
 transform = Transform3D(1, -2.19581e-17, 0, -2.19585e-17, 1, 2.1684e-19, 0, 0, 1, 0, 0, 0)
+target_position = Vector3(0, 0, -2)
+collide_with_areas = true
 
 [node name="LookCast" type="RayCast3D" parent="Node3D/Camera3D"]
 unique_name_in_owner = true
@@ -88,9 +125,8 @@ transform = Transform3D(-0.2, 0, -1.74846e-08, 0, 0.2, 0, 1.74846e-08, 0, -0.2, 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Node3D/Camera3D/Scalar"]
 transform = Transform3D(-2.85591e-08, 1, -3.25963e-09, -1, -2.85592e-08, -3.82529e-07, -3.82529e-07, 3.25963e-09, 1, 3.92455, 1.25495, -0.0062503)
 bone_name = "Barrel"
-bone_idx = 2
 use_external_skeleton = true
-external_skeleton = NodePath("../revolver/CrystalRevolver_Armature/Skeleton3D")
+external_skeleton = NodePath("../player/Player_Armature/Skeleton3D")
 
 [node name="BarrelMarker" type="Marker3D" parent="Node3D/Camera3D/Scalar/BoneAttachment3D"]
 transform = Transform3D(0.999998, 1.52347e-09, 0.00174528, -1.52347e-09, 1, -2.65902e-12, -0.00174528, 1.34441e-16, 0.999998, 0, 0, 0)
@@ -103,19 +139,14 @@ visible = false
 [node name="AnimationPlayer" parent="Node3D/Camera3D/Scalar/player" index="1"]
 autoplay = "Idle_Pistol"
 
-[node name="revolver" parent="Node3D/Camera3D/Scalar" node_paths=PackedStringArray("barrel", "animator") instance=ExtResource("5_p47bc")]
-transform = Transform3D(1, -5.77303e-16, -2.32831e-10, 5.77303e-16, 1, 8.67362e-19, 2.32831e-10, -8.67362e-19, 1, -0.00268195, 0, -0.00625054)
-script = ExtResource("5_75vfm")
-barrel = NodePath("../BoneAttachment3D/BarrelMarker")
-animator = NodePath("AnimationPlayer")
-shoot_sound = ExtResource("6_0owmy")
-damage = 3
-
-[node name="Crystal" parent="Node3D/Camera3D/Scalar/revolver/CrystalRevolver_Armature/Skeleton3D" index="1"]
-material_override = ExtResource("11_je7p5")
-
-[node name="AnimationPlayer" parent="Node3D/Camera3D/Scalar/revolver" index="1"]
-autoplay = "Idle"
+[node name="WalkParticles" type="GPUParticles3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.261955, 0)
+amount = 30
+lifetime = 2.0
+fixed_fps = 8
+interpolate = false
+process_material = SubResource("ParticleProcessMaterial_h17s1")
+draw_pass_1 = SubResource("SphereMesh_je7p5")
 
 [editable path="Node3D/Camera3D/Scalar/player"]
-[editable path="Node3D/Camera3D/Scalar/revolver"]

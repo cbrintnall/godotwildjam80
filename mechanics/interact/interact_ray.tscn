@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6wrht4tpfm83"]
+[gd_scene load_steps=5 format=3 uid="uid://c6wrht4tpfm83"]
 
 [ext_resource type="Script" uid="uid://ctug60ueld7f7" path="res://mechanics/interact/interact_ray.gd" id="1_rqpd1"]
 [ext_resource type="Texture2D" uid="uid://dajfon1u80pfe" path="res://mechanics/interact/speak-icon.png" id="2_2xu0t"]
+[ext_resource type="FontFile" uid="uid://btsb6a1sjfaxb" path="res://fonts/Gothica-Bold.ttf" id="2_ckg0a"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tvoqq"]
+font = ExtResource("2_ckg0a")
+font_size = 32
+outline_size = 1
+outline_color = Color(0.144063, 0.144063, 0.144063, 1)
+shadow_color = Color(0, 0, 0, 0.686275)
+shadow_offset = Vector2(2, 2)
 
 [node name="InteractRay" type="RayCast3D"]
 target_position = Vector3(0, 0, -4)
@@ -22,12 +31,13 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = 17.05
-offset_bottom = 40.05
+offset_top = 22.0
+offset_bottom = 62.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 text = "testset"
+label_settings = SubResource("LabelSettings_tvoqq")
 horizontal_alignment = 1
 
 [node name="CursorIcon" type="TextureRect" parent="Control"]
