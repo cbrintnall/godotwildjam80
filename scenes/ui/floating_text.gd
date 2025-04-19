@@ -3,6 +3,7 @@ extends Label3D
 func _ready():
   billboard = BaseMaterial3D.BILLBOARD_FIXED_Y
   font_size = 64
+  font = preload("res://fonts/Gothica-Bold.ttf")
   
   await get_tree().process_frame
   

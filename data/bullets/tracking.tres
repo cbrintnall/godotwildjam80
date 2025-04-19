@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BulletRef" load_steps=3 format=3 uid="uid://dlnshg027qsaj"]
+
+[ext_resource type="Script" uid="uid://yij8j2b7inx8" path="res://scenes/data/bullet_ref.gd" id="1_lo40l"]
+[ext_resource type="PackedScene" uid="uid://b5a7i0dvu6jq0" path="res://scenes/player/weapons/tracking_bullet.tscn" id="1_osi34"]
+
+[resource]
+script = ExtResource("1_lo40l")
+name = "Tracking"
+scene = ExtResource("1_osi34")
+metadata/_custom_type_script = "uid://yij8j2b7inx8"

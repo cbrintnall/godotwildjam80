@@ -33,6 +33,10 @@ directories/dtl_directory={
 
 enabled=PackedStringArray("res://addons/IVX_VertexColorImportSwapper/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/lines_and_trails_3d/plugin.cfg")
 
+[global_group]
+
+Spawn="Where the player spawns"
+
 [importer_defaults]
 
 scene={

@@ -1,4 +1,5 @@
 extends Node3D
+class_name DefaultBullet
 
 @onready var cast := $ShapeCast3D as ShapeCast3D
 

@@ -8,6 +8,7 @@ var SPEED = 3.0
 
 func _ready() -> void:
   health.died.connect(queue_free)
+  add_to_group("enemy")
 
 func _physics_process(delta: float) -> void:
   var current_location = global_transform.origin

@@ -1,10 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://csj43ecm865kg"]
+[gd_scene load_steps=14 format=3 uid="uid://csj43ecm865kg"]
 
 [ext_resource type="PackedScene" uid="uid://bdu8fworqnco6" path="res://scenes/maps/dash_room/dash_room.blend" id="1_62owa"]
 [ext_resource type="Script" uid="uid://cn16bfgyoripu" path="res://scenes/maps/room.gd" id="1_ddvv7"]
 [ext_resource type="PackedScene" uid="uid://bu6h0qeg715c6" path="res://scenes/player/weapons/revolver/revolver.tscn" id="3_dx27s"]
-[ext_resource type="Script" uid="uid://cnq84vt6qcf1y" path="res://scenes/maps/weapon_pickup.gd" id="3_qumwp"]
-[ext_resource type="Script" uid="uid://dpld21m4db2q3" path="res://mechanics/interact/interactable.gd" id="4_48nev"]
+[ext_resource type="PackedScene" uid="uid://b2usa4ukmcnj" path="res://scenes/maps/universal/scenes/weapon_pickup.tscn" id="3_qktoc"]
 [ext_resource type="PackedScene" uid="uid://dunvlyen88ju" path="res://scenes/maps/universal/scenes/puff_plant_trampoline.tscn" id="6_uc034"]
 [ext_resource type="PackedScene" uid="uid://dorv14osa8lvx" path="res://scenes/maps/universal/scenes/cauliplant.tscn" id="7_qktoc"]
 [ext_resource type="PackedScene" uid="uid://dse6k78j3sy48" path="res://scenes/maps/universal/scenes/crystala.tscn" id="8_qktoc"]
@@ -29,9 +28,6 @@ size = Vector2(500, 500)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ddvv7"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_48nev"]
-radius = 4.13917
-
 [node name="DashRoom" type="Node3D" node_paths=PackedStringArray("death_plane")]
 script = ExtResource("1_ddvv7")
 death_plane = NodePath("DeathPlane/Area3D")
@@ -49,22 +45,13 @@ mesh = SubResource("PlaneMesh_ddvv7")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DeathPlane/Area3D"]
 shape = SubResource("WorldBoundaryShape3D_ddvv7")
 
-[node name="RevolverPickup" type="Node3D" parent="." node_paths=PackedStringArray("interactable")]
-transform = Transform3D(0.12528, -0.142071, -0.0641938, -0.024929, 0.0630371, -0.188162, 0.153894, 0.125866, 0.021778, -45.8341, 6.1966, 4.85703)
-script = ExtResource("3_qumwp")
-interactable = NodePath("Interactable")
-weapon = NodePath("Revolver")
+[node name="WeaponPickup" parent="." instance=ExtResource("3_qktoc")]
+transform = Transform3D(0.12528, -0.142071, -0.0641938, -0.024929, 0.063037, -0.188162, 0.153894, 0.125866, 0.021778, -46.0283, 6.1966, 4.83489)
+weapon = NodePath("RevolverScalar/Revolver")
 
-[node name="Interactable" type="Area3D" parent="RevolverPickup"]
-transform = Transform3D(1, 0, 0, -2.98023e-08, 1, 1.49012e-08, -2.23517e-08, 0, 1, 0, 0, 0)
-script = ExtResource("4_48nev")
-prompt = "PICKUP"
-metadata/_custom_type_script = "uid://dpld21m4db2q3"
+[node name="RevolverScalar" type="Node3D" parent="WeaponPickup"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RevolverPickup/Interactable"]
-shape = SubResource("SphereShape3D_48nev")
-
-[node name="Revolver" parent="RevolverPickup" instance=ExtResource("3_dx27s")]
+[node name="Revolver" parent="WeaponPickup/RevolverScalar" instance=ExtResource("3_dx27s")]
 
 [node name="PuffPlant" parent="." instance=ExtResource("6_uc034")]
 transform = Transform3D(0.900683, 0, -0.434477, 0, 1, 0, 0.434477, 0, 0.900683, -79.901, 4.87511, 9.75527)

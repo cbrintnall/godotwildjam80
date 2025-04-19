@@ -9,6 +9,8 @@ class_name Weapon
 @export var crystal_mesh: Node3D
 
 var current_ammo := 0
+#var bullet_ref := preload("res://data/bullets/default.tres")
+var bullet_ref := preload("res://data/bullets/tracking.tres")
 
 var _last_reload_time: float
 var _normalized_ammo: float:
@@ -60,7 +62,8 @@ func start_use() -> bool:
     "parent": self
   })
   
-  var bullet = preload("res://scenes/player/weapons/bullet.tscn").instantiate()
+  
+  var bullet = bullet_ref.scene.instantiate()
   bullet.direction = barrel.global_position.direction_to(Find.player.look_point)
   bullet.global_position = barrel.global_position
   bullet.shooter = Find.player
@@ -68,7 +71,8 @@ func start_use() -> bool:
   bullet.damage = damage
   get_tree().root.add_child(bullet)
   
-  current_ammo -= 1
+  if not Find.unlimited_ammo:
+    current_ammo -= 1
   
   return true
   

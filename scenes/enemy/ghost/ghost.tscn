@@ -445,7 +445,7 @@ animation = &"breathe10"
 animation = &"rotate"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_v40vl"]
-graph_offset = Vector2(-41.1521, 1342.41)
+graph_offset = Vector2(1897.46, 4439.68)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_sqk30")
 nodes/Add2/position = Vector2(2893.33, 4973.33)
 "nodes/Add2 10/node" = SubResource("AnimationNodeAdd2_gkm4b")
