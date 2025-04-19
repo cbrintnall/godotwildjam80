@@ -17,15 +17,7 @@ material_override = SubResource("StandardMaterial3D_vugag")
 mesh = SubResource("CapsuleMesh_fmp1o")
 skeleton = NodePath("")
 
-[node name="Area3D" type="Area3D" parent="."]
-script = ExtResource("1_hh24w")
-prompt = "SPEAK"
-icon_name = "speak"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_hh24w")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_hh24w")
+script = ExtResource("1_hh24w")

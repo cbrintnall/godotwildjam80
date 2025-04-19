@@ -1,0 +1,630 @@
+[gd_scene load_steps=62 format=3 uid="uid://db3bjbjobajfo"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6nvvi"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_gkm4b"]
+
+[sub_resource type="Animation" id="Animation_otn51"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Container/bubble1:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Container/bubble2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Container/bubble3:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Container/bubble4:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Container/bubble5:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Container/bubble6:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Container/bubble7:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Container/bubble8:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Container/bubble9:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Container/bubble10:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Container:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_l3tua"]
+resource_name = "breathe"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Container/bubble1:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.5, 0.5, 0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_x67pj"]
+resource_name = "breathe10"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Container/bubble10:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.5, 0.5, 0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_0lmtd"]
+resource_name = "breathe2"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Container/bubble2:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.5, 0.5, 0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_chcou"]
+resource_name = "breathe3"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Container/bubble3:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.5, 0.5, 0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_fjs42"]
+resource_name = "breathe4"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Container/bubble4:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.5, 0.5, 0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_qw10p"]
+resource_name = "breathe5"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Container/bubble5:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.5, 0.5, 0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_oksm3"]
+resource_name = "breathe6"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Container/bubble6:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.5, 0.5, 0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_ryksr"]
+resource_name = "breathe7"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Container/bubble7:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.5, 0.5, 0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_drcr6"]
+resource_name = "breathe8"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Container/bubble8:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.5, 0.5, 0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_sqk30"]
+resource_name = "breathe9"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Container/bubble9:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.5, 0.5, 0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_6nvvi"]
+resource_name = "rotate"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Container:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 3.14159, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_flfrr"]
+_data = {
+&"RESET": SubResource("Animation_otn51"),
+&"breathe": SubResource("Animation_l3tua"),
+&"breathe10": SubResource("Animation_x67pj"),
+&"breathe2": SubResource("Animation_0lmtd"),
+&"breathe3": SubResource("Animation_chcou"),
+&"breathe4": SubResource("Animation_fjs42"),
+&"breathe5": SubResource("Animation_qw10p"),
+&"breathe6": SubResource("Animation_oksm3"),
+&"breathe7": SubResource("Animation_ryksr"),
+&"breathe8": SubResource("Animation_drcr6"),
+&"breathe9": SubResource("Animation_sqk30"),
+&"rotate": SubResource("Animation_6nvvi")
+}
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_gkm4b"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_l3tua"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_otn51"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_0lmtd"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_chcou"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_fjs42"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_qw10p"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_oksm3"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_ryksr"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_drcr6"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_sqk30"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x67pj"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_flfrr"]
+animation = &"breathe9"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_v40vl"]
+animation = &"breathe8"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fk3wu"]
+animation = &"breathe7"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f7bjc"]
+animation = &"breathe6"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kcy13"]
+animation = &"breathe5"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vp7r4"]
+animation = &"breathe4"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_r8pvt"]
+animation = &"breathe3"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ww1xi"]
+animation = &"breathe2"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_lqa86"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_vqv2r"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_f56xq"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_gn5sw"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_xx7ie"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_gqge4"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_7eutv"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_5gw85"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_v1qot"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_kn1sa"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_f1tgc"]
+
+[sub_resource type="AnimationNodeTimeSeek" id="AnimationNodeTimeSeek_5yl3n"]
+
+[sub_resource type="AnimationNodeTimeSeek" id="AnimationNodeTimeSeek_hhq4y"]
+
+[sub_resource type="AnimationNodeTimeSeek" id="AnimationNodeTimeSeek_qu5e0"]
+
+[sub_resource type="AnimationNodeTimeSeek" id="AnimationNodeTimeSeek_hw7ec"]
+
+[sub_resource type="AnimationNodeTimeSeek" id="AnimationNodeTimeSeek_4bpfn"]
+
+[sub_resource type="AnimationNodeTimeSeek" id="AnimationNodeTimeSeek_ll473"]
+
+[sub_resource type="AnimationNodeTimeSeek" id="AnimationNodeTimeSeek_yp0xg"]
+
+[sub_resource type="AnimationNodeTimeSeek" id="AnimationNodeTimeSeek_vw3dh"]
+
+[sub_resource type="AnimationNodeTimeSeek" id="AnimationNodeTimeSeek_jkaop"]
+
+[sub_resource type="AnimationNodeTimeSeek" id="AnimationNodeTimeSeek_enuyo"]
+
+[sub_resource type="AnimationNodeTimeSeek" id="AnimationNodeTimeSeek_uui84"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gn7e4"]
+animation = &"breathe"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nq2qa"]
+animation = &"breathe10"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ykgqy"]
+animation = &"rotate"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_v40vl"]
+graph_offset = Vector2(-41.1521, 1342.41)
+nodes/Add2/node = SubResource("AnimationNodeAdd2_sqk30")
+nodes/Add2/position = Vector2(2893.33, 4973.33)
+"nodes/Add2 10/node" = SubResource("AnimationNodeAdd2_gkm4b")
+"nodes/Add2 10/position" = Vector2(1133.33, 5280)
+"nodes/Add2 11/node" = SubResource("AnimationNodeAdd2_l3tua")
+"nodes/Add2 11/position" = Vector2(946.667, 5320)
+"nodes/Add2 2/node" = SubResource("AnimationNodeAdd2_otn51")
+"nodes/Add2 2/position" = Vector2(2706.67, 5000)
+"nodes/Add2 3/node" = SubResource("AnimationNodeAdd2_0lmtd")
+"nodes/Add2 3/position" = Vector2(2506.67, 5040)
+"nodes/Add2 4/node" = SubResource("AnimationNodeAdd2_chcou")
+"nodes/Add2 4/position" = Vector2(2306.67, 5066.67)
+"nodes/Add2 5/node" = SubResource("AnimationNodeAdd2_fjs42")
+"nodes/Add2 5/position" = Vector2(2120, 5106.67)
+"nodes/Add2 6/node" = SubResource("AnimationNodeAdd2_qw10p")
+"nodes/Add2 6/position" = Vector2(1920, 5146.67)
+"nodes/Add2 7/node" = SubResource("AnimationNodeAdd2_oksm3")
+"nodes/Add2 7/position" = Vector2(1720, 5173.33)
+"nodes/Add2 8/node" = SubResource("AnimationNodeAdd2_ryksr")
+"nodes/Add2 8/position" = Vector2(1533.33, 5213.33)
+"nodes/Add2 9/node" = SubResource("AnimationNodeAdd2_drcr6")
+"nodes/Add2 9/position" = Vector2(1333.33, 5240)
+"nodes/Animation 12/node" = SubResource("AnimationNodeAnimation_x67pj")
+"nodes/Animation 12/position" = Vector2(360, 1093.33)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_flfrr")
+"nodes/Animation 2/position" = Vector2(360, 1320)
+"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_v40vl")
+"nodes/Animation 3/position" = Vector2(360, 1546.67)
+"nodes/Animation 4/node" = SubResource("AnimationNodeAnimation_fk3wu")
+"nodes/Animation 4/position" = Vector2(360, 1786.67)
+"nodes/Animation 5/node" = SubResource("AnimationNodeAnimation_f7bjc")
+"nodes/Animation 5/position" = Vector2(360, 2013.33)
+"nodes/Animation 6/node" = SubResource("AnimationNodeAnimation_kcy13")
+"nodes/Animation 6/position" = Vector2(360, 2253.33)
+"nodes/Animation 7/node" = SubResource("AnimationNodeAnimation_vp7r4")
+"nodes/Animation 7/position" = Vector2(360, 2466.67)
+"nodes/Animation 8/node" = SubResource("AnimationNodeAnimation_r8pvt")
+"nodes/Animation 8/position" = Vector2(360, 2693.33)
+"nodes/Animation 9/node" = SubResource("AnimationNodeAnimation_ww1xi")
+"nodes/Animation 9/position" = Vector2(360, 2920)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_f1tgc")
+nodes/TimeScale/position = Vector2(746.667, 5386.67)
+"nodes/TimeScale 10/node" = SubResource("AnimationNodeTimeScale_lqa86")
+"nodes/TimeScale 10/position" = Vector2(746.667, 5146.67)
+"nodes/TimeScale 11/node" = SubResource("AnimationNodeTimeScale_vqv2r")
+"nodes/TimeScale 11/position" = Vector2(746.667, 4920)
+"nodes/TimeScale 2/node" = SubResource("AnimationNodeTimeScale_f56xq")
+"nodes/TimeScale 2/position" = Vector2(746.667, 4226.67)
+"nodes/TimeScale 3/node" = SubResource("AnimationNodeTimeScale_gn5sw")
+"nodes/TimeScale 3/position" = Vector2(746.667, 1253.33)
+"nodes/TimeScale 4/node" = SubResource("AnimationNodeTimeScale_xx7ie")
+"nodes/TimeScale 4/position" = Vector2(746.667, 1480)
+"nodes/TimeScale 5/node" = SubResource("AnimationNodeTimeScale_gqge4")
+"nodes/TimeScale 5/position" = Vector2(746.667, 1706.67)
+"nodes/TimeScale 6/node" = SubResource("AnimationNodeTimeScale_7eutv")
+"nodes/TimeScale 6/position" = Vector2(746.667, 1946.67)
+"nodes/TimeScale 7/node" = SubResource("AnimationNodeTimeScale_5gw85")
+"nodes/TimeScale 7/position" = Vector2(746.667, 2173.33)
+"nodes/TimeScale 8/node" = SubResource("AnimationNodeTimeScale_v1qot")
+"nodes/TimeScale 8/position" = Vector2(746.667, 4453.33)
+"nodes/TimeScale 9/node" = SubResource("AnimationNodeTimeScale_kn1sa")
+"nodes/TimeScale 9/position" = Vector2(746.667, 4680)
+nodes/TimeSeek/node = SubResource("AnimationNodeTimeSeek_uui84")
+nodes/TimeSeek/position = Vector2(560, 3560)
+"nodes/TimeSeek 10/node" = SubResource("AnimationNodeTimeSeek_5yl3n")
+"nodes/TimeSeek 10/position" = Vector2(560, 3786.67)
+"nodes/TimeSeek 11/node" = SubResource("AnimationNodeTimeSeek_hhq4y")
+"nodes/TimeSeek 11/position" = Vector2(560, 4026.67)
+"nodes/TimeSeek 2/node" = SubResource("AnimationNodeTimeSeek_qu5e0")
+"nodes/TimeSeek 2/position" = Vector2(560, 4253.33)
+"nodes/TimeSeek 3/node" = SubResource("AnimationNodeTimeSeek_hw7ec")
+"nodes/TimeSeek 3/position" = Vector2(560, 1280)
+"nodes/TimeSeek 4/node" = SubResource("AnimationNodeTimeSeek_4bpfn")
+"nodes/TimeSeek 4/position" = Vector2(560, 1520)
+"nodes/TimeSeek 5/node" = SubResource("AnimationNodeTimeSeek_ll473")
+"nodes/TimeSeek 5/position" = Vector2(560, 1746.67)
+"nodes/TimeSeek 6/node" = SubResource("AnimationNodeTimeSeek_yp0xg")
+"nodes/TimeSeek 6/position" = Vector2(560, 1986.67)
+"nodes/TimeSeek 7/node" = SubResource("AnimationNodeTimeSeek_vw3dh")
+"nodes/TimeSeek 7/position" = Vector2(560, 2213.33)
+"nodes/TimeSeek 8/node" = SubResource("AnimationNodeTimeSeek_jkaop")
+"nodes/TimeSeek 8/position" = Vector2(560, 4493.33)
+"nodes/TimeSeek 9/node" = SubResource("AnimationNodeTimeSeek_enuyo")
+"nodes/TimeSeek 9/position" = Vector2(560, 4720)
+nodes/breathe/node = SubResource("AnimationNodeAnimation_gn7e4")
+nodes/breathe/position = Vector2(360, 3146.67)
+nodes/breathe10/node = SubResource("AnimationNodeAnimation_nq2qa")
+nodes/breathe10/position = Vector2(360, 3373.33)
+nodes/output/position = Vector2(3093.33, 4973.33)
+nodes/rotate/node = SubResource("AnimationNodeAnimation_ykgqy")
+nodes/rotate/position = Vector2(360, 3586.67)
+node_connections = [&"Add2", 0, &"Add2 2", &"Add2", 1, &"TimeScale 11", &"Add2 10", 0, &"Add2 11", &"Add2 10", 1, &"TimeScale 2", &"Add2 11", 0, &"Animation 12", &"Add2 11", 1, &"TimeScale", &"Add2 2", 0, &"Add2 3", &"Add2 2", 1, &"TimeScale 3", &"Add2 3", 0, &"Add2 4", &"Add2 3", 1, &"TimeScale 4", &"Add2 4", 0, &"Add2 5", &"Add2 4", 1, &"TimeScale 5", &"Add2 5", 0, &"Add2 6", &"Add2 5", 1, &"TimeScale 6", &"Add2 6", 0, &"Add2 7", &"Add2 6", 1, &"TimeScale 7", &"Add2 7", 0, &"Add2 8", &"Add2 7", 1, &"TimeScale 8", &"Add2 8", 0, &"Add2 9", &"Add2 8", 1, &"TimeScale 9", &"Add2 9", 0, &"Add2 10", &"Add2 9", 1, &"TimeScale 10", &"TimeScale", 0, &"TimeSeek", &"TimeScale 10", 0, &"TimeSeek 10", &"TimeScale 11", 0, &"TimeSeek 11", &"TimeScale 2", 0, &"TimeSeek 2", &"TimeScale 3", 0, &"TimeSeek 3", &"TimeScale 4", 0, &"TimeSeek 4", &"TimeScale 5", 0, &"TimeSeek 5", &"TimeScale 6", 0, &"TimeSeek 6", &"TimeScale 7", 0, &"TimeSeek 7", &"TimeScale 8", 0, &"TimeSeek 8", &"TimeScale 9", 0, &"TimeSeek 9", &"TimeSeek", 0, &"rotate", &"TimeSeek 10", 0, &"Animation 9", &"TimeSeek 11", 0, &"breathe10", &"TimeSeek 2", 0, &"breathe", &"TimeSeek 3", 0, &"Animation 2", &"TimeSeek 4", 0, &"Animation 3", &"TimeSeek 5", 0, &"Animation 4", &"TimeSeek 6", 0, &"Animation 5", &"TimeSeek 7", 0, &"Animation 6", &"TimeSeek 8", 0, &"Animation 7", &"TimeSeek 9", 0, &"Animation 8", &"output", 0, &"Add2"]
+
+[node name="Ghost" type="CharacterBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_6nvvi")
+
+[node name="Container" type="Node3D" parent="."]
+
+[node name="bubble1" type="MeshInstance3D" parent="Container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.280636, 0.718115, 0)
+mesh = SubResource("SphereMesh_gkm4b")
+
+[node name="bubble2" type="MeshInstance3D" parent="Container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0603734, 0.399927, 0)
+mesh = SubResource("SphereMesh_gkm4b")
+
+[node name="bubble3" type="MeshInstance3D" parent="Container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.180426, 0.940436, 0)
+mesh = SubResource("SphereMesh_gkm4b")
+
+[node name="bubble4" type="MeshInstance3D" parent="Container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.276267, 1.20076, -4.76837e-07)
+mesh = SubResource("SphereMesh_gkm4b")
+
+[node name="bubble5" type="MeshInstance3D" parent="Container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.139509, 1.44154, 0)
+mesh = SubResource("SphereMesh_gkm4b")
+
+[node name="bubble6" type="MeshInstance3D" parent="Container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.264099, 1.42848, 0)
+mesh = SubResource("SphereMesh_gkm4b")
+
+[node name="bubble7" type="MeshInstance3D" parent="Container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.222188, 0.625658, 0.344375)
+mesh = SubResource("SphereMesh_gkm4b")
+
+[node name="bubble8" type="MeshInstance3D" parent="Container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.105988, 0.960903, 0.249362)
+mesh = SubResource("SphereMesh_gkm4b")
+
+[node name="bubble9" type="MeshInstance3D" parent="Container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0278743, 0.959275, -0.31054)
+mesh = SubResource("SphereMesh_gkm4b")
+
+[node name="bubble10" type="MeshInstance3D" parent="Container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.283446, 1.32806, 0.344375)
+mesh = SubResource("SphereMesh_gkm4b")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_flfrr")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeBlendTree_v40vl")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Add2/add_amount = 1.0
+"parameters/Add2 10/add_amount" = 1.0
+"parameters/Add2 11/add_amount" = 1.0
+"parameters/Add2 2/add_amount" = 1.0
+"parameters/Add2 3/add_amount" = 1.0
+"parameters/Add2 4/add_amount" = 1.0
+"parameters/Add2 5/add_amount" = 1.0
+"parameters/Add2 6/add_amount" = 1.0
+"parameters/Add2 7/add_amount" = 1.0
+"parameters/Add2 8/add_amount" = 1.0
+"parameters/Add2 9/add_amount" = 1.0
+parameters/TimeScale/scale = 1.0
+"parameters/TimeScale 10/scale" = 1.0
+"parameters/TimeScale 11/scale" = 1.0
+"parameters/TimeScale 2/scale" = 1.0
+"parameters/TimeScale 3/scale" = 1.0
+"parameters/TimeScale 4/scale" = 1.0
+"parameters/TimeScale 5/scale" = 1.0
+"parameters/TimeScale 6/scale" = 1.0
+"parameters/TimeScale 7/scale" = 1.0
+"parameters/TimeScale 8/scale" = 1.0
+"parameters/TimeScale 9/scale" = 1.0
+parameters/TimeSeek/seek_request = -1.0
+"parameters/TimeSeek 10/seek_request" = -1.0
+"parameters/TimeSeek 11/seek_request" = -1.0
+"parameters/TimeSeek 2/seek_request" = -1.0
+"parameters/TimeSeek 3/seek_request" = -1.0
+"parameters/TimeSeek 4/seek_request" = -1.0
+"parameters/TimeSeek 5/seek_request" = -1.0
+"parameters/TimeSeek 6/seek_request" = -1.0
+"parameters/TimeSeek 7/seek_request" = -1.0
+"parameters/TimeSeek 8/seek_request" = -1.0
+"parameters/TimeSeek 9/seek_request" = -1.0
