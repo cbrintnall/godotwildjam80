@@ -1,24 +1,151 @@
-[gd_scene load_steps=5 format=3 uid="uid://bu6h0qeg715c6"]
+[gd_scene load_steps=21 format=3 uid="uid://bu6h0qeg715c6"]
 
 [ext_resource type="PackedScene" uid="uid://y0orbfjxelwe" path="res://scenes/player/weapons/revolver.glb" id="1_d06ug"]
 [ext_resource type="Script" uid="uid://6iwg4wwqnjg2" path="res://scenes/player/weapon.gd" id="2_fmgpc"]
 [ext_resource type="AudioStream" uid="uid://be8nmf5ek0xd8" path="res://audio/pistol-shoot.ogg" id="3_4kfxi"]
-[ext_resource type="Material" uid="uid://cotydyun2xij" path="res://scenes/player/weapons/Crystal.tres" id="4_np501"]
+[ext_resource type="Texture2D" uid="uid://cs8hfjc7djok5" path="res://textures/star-billboard.png" id="4_d06ug"]
 
-[node name="Revolver" type="Node3D"]
+[sub_resource type="Curve" id="Curve_d06ug"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
 
-[node name="revolver" parent="." node_paths=PackedStringArray("barrel", "animator") instance=ExtResource("1_d06ug")]
-transform = Transform3D(1, -5.32924e-16, -4.65661e-10, 7.99347e-16, 1, 1.30104e-18, 4.65661e-10, -1.0842e-18, 1, -0.00268195, 0, -0.00625054)
+[sub_resource type="CurveTexture" id="CurveTexture_fmgpc"]
+curve = SubResource("Curve_d06ug")
+
+[sub_resource type="Curve" id="Curve_fmgpc"]
+_data = [Vector2(1e-05, 0), 0.0, 0.0, 0, 0, Vector2(0.489286, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_4kfxi"]
+curve = SubResource("Curve_fmgpc")
+
+[sub_resource type="Curve" id="Curve_4kfxi"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.257143, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_np501"]
+curve = SubResource("Curve_4kfxi")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d06ug"]
+emission_shape = 1
+emission_sphere_radius = 0.5
+gravity = Vector3(0, -1, 0)
+scale_min = 0.01
+scale_max = 0.02
+scale_curve = SubResource("CurveTexture_np501")
+alpha_curve = SubResource("CurveTexture_fmgpc")
+emission_curve = SubResource("CurveTexture_4kfxi")
+hue_variation_min = -2.23517e-08
+hue_variation_max = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fmgpc"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("4_d06ug")
+disable_receive_shadows = true
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_4kfxi"]
+material = SubResource("StandardMaterial3D_fmgpc")
+
+[sub_resource type="Curve" id="Curve_np501"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_y8v71"]
+curve = SubResource("Curve_np501")
+
+[sub_resource type="Curve" id="Curve_v6w1a"]
+_data = [Vector2(1e-05, 0), 0.0, 0.0, 0, 0, Vector2(0.489286, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_vt3ss"]
+curve = SubResource("Curve_v6w1a")
+
+[sub_resource type="Curve" id="Curve_g66wq"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.257143, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_s0mj1"]
+curve = SubResource("Curve_g66wq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ir1ud"]
+emission_shape = 1
+emission_sphere_radius = 0.5
+direction = Vector3(1, 1, 1)
+spread = 180.0
+initial_velocity_min = 15.0
+initial_velocity_max = 25.0
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 9.49949e-08
+gravity = Vector3(0, -1, 0)
+damping_min = 5.0
+damping_max = 15.0
+scale_min = 0.05
+scale_max = 0.1
+scale_curve = SubResource("CurveTexture_s0mj1")
+alpha_curve = SubResource("CurveTexture_y8v71")
+emission_curve = SubResource("CurveTexture_vt3ss")
+hue_variation_min = -2.23517e-08
+hue_variation_max = 0.1
+turbulence_enabled = true
+
+[node name="Revolver" type="Node3D" node_paths=PackedStringArray("barrel", "animator", "crystal_mesh")]
 script = ExtResource("2_fmgpc")
-barrel = NodePath("")
-animator = NodePath("AnimationPlayer")
+barrel = NodePath("BoneAttachment3D/Marker3D")
+animator = NodePath("revolver/AnimationPlayer")
 shoot_sound = ExtResource("3_4kfxi")
-damage = 3
+crystal_mesh = NodePath("revolver/CrystalRevolver_Armature/Skeleton3D/InnerCrystal")
 
-[node name="Crystal" parent="revolver/CrystalRevolver_Armature/Skeleton3D" index="1"]
-material_override = ExtResource("4_np501")
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="."]
+transform = Transform3D(-6.23802e-15, 1, 1.49994e-07, -1, 3.22225e-15, -3.82529e-07, -3.82529e-07, -1.49994e-07, 1, 0.703438, 1.34083, -0.00625027)
+bone_name = "Chamber"
+bone_idx = 1
+use_external_skeleton = true
+external_skeleton = NodePath("../revolver/CrystalRevolver_Armature/Skeleton3D")
 
-[node name="AnimationPlayer" parent="revolver" index="1"]
-autoplay = "Idle"
+[node name="Marker3D" type="Marker3D" parent="BoneAttachment3D"]
+
+[node name="revolver" parent="." instance=ExtResource("1_d06ug")]
+transform = Transform3D(1, -5.32924e-16, -4.65661e-10, 7.99347e-16, 1, 1.30104e-18, 4.65661e-10, -1.0842e-18, 1, -0.00268195, 0, -0.00625054)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="revolver"]
+transform = Transform3D(-6.94907e-15, 1, 1.50459e-07, -1, 2.4229e-15, -3.82529e-07, -3.82529e-07, -1.50459e-07, 1, 0.70612, 1.34083, 2.68687e-07)
+bone_name = "Chamber"
+bone_idx = 1
+use_external_skeleton = true
+external_skeleton = NodePath("../CrystalRevolver_Armature/Skeleton3D")
+
+[node name="AmmoIndicatorParticles" type="GPUParticles3D" parent="revolver/BoneAttachment3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.180117, 0, -6.89179e-08)
+amount = 30
+lifetime = 0.2
+fixed_fps = 12
+interpolate = false
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_d06ug")
+draw_pass_1 = SubResource("QuadMesh_4kfxi")
+
+[node name="ShotParticles" type="GPUParticles3D" parent="revolver/BoneAttachment3D"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.180117, 0, -6.89179e-08)
+emitting = false
+amount = 30
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 12
+interpolate = false
+process_material = SubResource("ParticleProcessMaterial_ir1ud")
+draw_pass_1 = SubResource("QuadMesh_4kfxi")
+
+[node name="GlowSprite" type="Sprite3D" parent="revolver/BoneAttachment3D"]
+unique_name_in_owner = true
+modulate = Color(0.933333, 0.737255, 0.85098, 0.137255)
+pixel_size = 0.03
+billboard = 1
+no_depth_test = true
+texture = ExtResource("4_d06ug")
 
 [editable path="revolver"]

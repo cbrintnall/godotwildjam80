@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bb77mn7v20iw6"]
+
+[ext_resource type="Script" uid="uid://cn16bfgyoripu" path="res://scenes/maps/room.gd" id="1_hykro"]
+[ext_resource type="PackedScene" uid="uid://c4w5t05365gfn" path="res://scenes/maps/universal/puffplant.glb" id="2_ne5bp"]
+
+[node name="" type="Node3D"]
+script = ExtResource("1_hykro")
+
+[node name="puffplant" type="Node3D" parent="." groups=["puffplant"] instance=ExtResource("2_ne5bp")]

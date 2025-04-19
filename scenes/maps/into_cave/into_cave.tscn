@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://onu522ievgqb"]
+
+[ext_resource type="Script" uid="uid://cn16bfgyoripu" path="res://scenes/maps/room.gd" id="1_jyuqf"]
+[ext_resource type="PackedScene" uid="uid://dfsouj44k55no" path="res://scenes/maps/raw/into_cave.blend" id="2_id0ba"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_jyuqf")
+
+[node name="into_cave" parent="." instance=ExtResource("2_id0ba")]
+
+[editable path="into_cave"]

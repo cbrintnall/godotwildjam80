@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://ddh26ujlgjd6o"]
 
+[ext_resource type="Script" uid="uid://cn16bfgyoripu" path="res://scenes/maps/room.gd" id="1_4u751"]
 [ext_resource type="PackedScene" uid="uid://kpneoxjywuwo" path="res://scenes/maps/intro/intro.blend" id="1_ieuhs"]
-[ext_resource type="PackedScene" uid="uid://8s7gnkn1nq68" path="res://scenes/player/player.tscn" id="2_2u7w1"]
 [ext_resource type="AudioStream" uid="uid://vyiq5u7rcmvc" path="res://audio/ambience/forest.ogg" id="3_2d3vu"]
 [ext_resource type="ArrayMesh" uid="uid://5pidmafqdnux" path="res://scenes/maps/universal/leaf_mesh.tres" id="5_4u751"]
 [ext_resource type="PackedScene" uid="uid://dorv14osa8lvx" path="res://scenes/maps/universal/scenes/cauliplant.tscn" id="5_sqrrk"]
@@ -10,6 +10,8 @@
 background_energy_multiplier = 0.0
 ambient_light_source = 2
 ambient_light_energy = 0.0
+ssao_enabled = true
+ssao_intensity = 3.63
 fog_mode = 1
 fog_light_color = Color(0.570847, 0.532471, 0.606662, 1)
 fog_density = 1.066
@@ -59,14 +61,12 @@ scale_curve = SubResource("CurveTexture_sqrrk")
 radius = 41.2964
 
 [node name="Intro" type="Node3D"]
+script = ExtResource("1_4u751")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_2u7w1")
 
 [node name="intro" parent="." instance=ExtResource("1_ieuhs")]
-
-[node name="Player" parent="." instance=ExtResource("2_2u7w1")]
-transform = Transform3D(0.0725941, 0, 0.997362, 0, 1, 0, -0.997362, 0, 0.0725941, -14.5582, 0, 3.52157)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_2d3vu")

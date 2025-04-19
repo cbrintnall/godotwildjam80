@@ -31,7 +31,7 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
-import_script/path=""
+import_script/path="uid://dp0mc26qg62rs"
 _subresources={
 "materials": {
 "OpaquePalette": {
@@ -41,10 +41,6 @@ _subresources={
 "OpaquePaletteNoCull": {
 "use_external/enabled": true,
 "use_external/path": "res://scenes/maps/intro/OpaquePaletteNoCull.tres"
-},
-"RoomFade": {
-"use_external/enabled": true,
-"use_external/path": "res://scenes/maps/intro/RoomFade.tres"
 }
 }
 }

@@ -1,15 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://coainxxrtua1l"]
+[gd_scene load_steps=6 format=3 uid="uid://coainxxrtua1l"]
 
 [ext_resource type="Script" uid="uid://daca5ivqdjpne" path="res://mechanics/interact/interactables/dialogue_npc/dialogue_npc.gd" id="1_hh24w"]
+[ext_resource type="Script" uid="uid://dpld21m4db2q3" path="res://mechanics/interact/interactable.gd" id="2_ndpqj"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hh24w"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vugag"]
 albedo_color = Color(0, 0, 1, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fmp1o"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hh24w"]
-
 [node name="DialogueNpc" type="CharacterBody3D"]
+script = ExtResource("1_hh24w")
+dialogue_timeline_name = "test_timeline"
+
+[node name="Interactable" type="Area3D" parent="."]
+script = ExtResource("2_ndpqj")
+metadata/_custom_type_script = "uid://dpld21m4db2q3"
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Interactable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_hh24w")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -24,8 +35,4 @@ icon_name = "speak"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_hh24w")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_hh24w")
