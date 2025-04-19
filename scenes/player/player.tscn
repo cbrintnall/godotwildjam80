@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://8s7gnkn1nq68"]
+[gd_scene load_steps=19 format=3 uid="uid://8s7gnkn1nq68"]
 
 [ext_resource type="Script" uid="uid://dt2lc5cogov06" path="res://player.gd" id="1_8afob"]
 [ext_resource type="PackedScene" uid="uid://2klosqoxmvv0" path="res://scenes/player/player.glb" id="2_dovo2"]
@@ -8,9 +8,14 @@
 [ext_resource type="Script" uid="uid://bg53qpxsynngb" path="res://scenes/player/player_weapon_manager.gd" id="3_fm80t"]
 [ext_resource type="PackedScene" uid="uid://c6wrht4tpfm83" path="res://mechanics/interact/interact_ray.tscn" id="3_p47bc"]
 [ext_resource type="Script" uid="uid://bykijvx7m61g5" path="res://scenes/player/game_cam.gd" id="4_5gtgg"]
+[ext_resource type="Shader" uid="uid://dowttt205lpr3" path="res://shaders/vignette.gdshader" id="7_h17s1"]
+[ext_resource type="Script" uid="uid://bllj3t0nrr137" path="res://scenes/health.gd" id="9_5gtgg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0owmy"]
 font_size = 64
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_je7p5"]
+shader = ExtResource("7_h17s1")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yldxj"]
 
@@ -53,30 +58,34 @@ script = ExtResource("2_je7p5")
 [node name="PlayerWeaponManager" type="Node" parent="."]
 script = ExtResource("3_fm80t")
 
+[node name="Health" type="Node" parent="."]
+script = ExtResource("9_5gtgg")
+metadata/_custom_type_script = "uid://bllj3t0nrr137"
+
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.58999, 0)
 light_color = Color(0.886275, 0.756863, 0.466667, 1)
-light_energy = 16.0
+light_energy = 8.0
 omni_range = 16.6247
 
 [node name="PlayerUI" type="CanvasLayer" parent="."]
 script = ExtResource("2_qek5x")
 
-[node name="TextureRect" type="TextureRect" parent="PlayerUI"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+[node name="MarginContainer2" type="MarginContainer" parent="PlayerUI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="PlayerUI/MarginContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("2_lvxji")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="MarginContainer" type="MarginContainer" parent="PlayerUI"]
 anchors_preset = 2
@@ -95,6 +104,27 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "10/10"
 label_settings = SubResource("LabelSettings_0owmy")
+
+[node name="FadeRect" type="ColorRect" parent="PlayerUI"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="HurtRect" type="ColorRect" parent="PlayerUI"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_je7p5")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -120,6 +150,7 @@ transform = Transform3D(1, -2.19581e-17, 0, -2.19585e-17, 1, 2.1684e-19, 0, 0, 1
 target_position = Vector3(0, 0, -100)
 
 [node name="Scalar" type="Node3D" parent="Node3D/Camera3D"]
+unique_name_in_owner = true
 transform = Transform3D(-0.2, 0, -1.74846e-08, 0, 0.2, 0, 1.74846e-08, 0, -0.2, 0, -0.36, 0)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Node3D/Camera3D/Scalar"]

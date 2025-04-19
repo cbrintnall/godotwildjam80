@@ -2,19 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1iw74cspu8hn"
-path="res://.godot/imported/revolver_baba32-1x.png-a72c92a9f29b97aae2784176cd04be2a.ctex"
+uid="uid://brnwjg2usyhod"
+path="res://.godot/imported/circle-billboard.png-443e9b498fb388c8ae5cfe29593e301a.ctex"
 metadata={
 "vram_texture": false
-}
-generator_parameters={
-"md5": "81580153c4d85e055ba791090a8c4344"
 }
 
 [deps]
 
-source_file="res://scenes/player/weapons/revolver_baba32-1x.png"
-dest_files=["res://.godot/imported/revolver_baba32-1x.png-a72c92a9f29b97aae2784176cd04be2a.ctex"]
+source_file="res://textures/circle-billboard.png"
+dest_files=["res://.godot/imported/circle-billboard.png-443e9b498fb388c8ae5cfe29593e301a.ctex"]
 
 [params]
 
@@ -28,10 +25,10 @@ mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
-process/fix_alpha_border=false
+process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

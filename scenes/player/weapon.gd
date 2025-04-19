@@ -6,6 +6,7 @@ class_name Weapon
 @export var shoot_sound: AudioStream
 @export var max_ammo := 8
 @export var damage := 1
+@export var crystal_mesh: Node3D
 
 var current_ammo := 0
 
@@ -48,6 +49,9 @@ func start_use() -> bool:
   animator.stop()
   animator.play("Shoot")
   
+  %ShotParticles.amount = _normalized_ammo * 30.0
+  %ShotParticles.restart()
+  
   Find.player.camera.shake(0.4, 0.2, preload("res://data/curve_shoot_camera_shake.tres"), Vector2.UP)
   AudioManager.playd({
     "stream": shoot_sound,
@@ -79,3 +83,7 @@ func _process(delta: float) -> void:
       animator.play("Reload")  
   
   Find.player.ui.ammo_counter.text = "%d / %d" % [ current_ammo, max_ammo ]
+  
+  # weird origin issues, so commented out
+  #%GlowSprite.scale = max(_normalized_ammo,0.01) * Vector3.ONE
+  crystal_mesh.scale = %GlowSprite.scale

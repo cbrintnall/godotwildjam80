@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://kpneoxjywuwo"
-path="res://.godot/imported/intro.blend-b89a2ffc748adf6bf8652b920f8ebc25.scn"
+uid="uid://bdu8fworqnco6"
+path="res://.godot/imported/dash_room.blend-746eaee5737e6152a17e84524931c8a7.scn"
 
 [deps]
 
-source_file="res://scenes/maps/intro/intro.blend"
-dest_files=["res://.godot/imported/intro.blend-b89a2ffc748adf6bf8652b920f8ebc25.scn"]
+source_file="res://scenes/maps/dash_room/dash_room.blend"
+dest_files=["res://.godot/imported/dash_room.blend-746eaee5737e6152a17e84524931c8a7.scn"]
 
 [params]
 
@@ -34,13 +34,9 @@ animation/import_rest_as_RESET=false
 import_script/path="uid://dp0mc26qg62rs"
 _subresources={
 "materials": {
-"OpaquePalette": {
+"Material": {
 "use_external/enabled": true,
-"use_external/path": "res://scenes/maps/intro/OpaquePalette.tres"
-},
-"OpaquePaletteNoCull": {
-"use_external/enabled": true,
-"use_external/path": "res://scenes/maps/intro/OpaquePaletteNoCull.tres"
+"use_external/path": "res://scenes/maps/dash_room/Material.tres"
 }
 }
 }

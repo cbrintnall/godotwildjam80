@@ -1,0 +1,5 @@
+{
+  "intro": "res://scenes/maps/intro/intro.tscn",
+  "dash_room": "res://scenes/maps/dash_room/dash_room.tscn",
+  "room_two": "res://scenes/maps/room_two/room_two.tscn"
+}
