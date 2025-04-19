@@ -10,6 +10,8 @@
 background_energy_multiplier = 0.0
 ambient_light_source = 2
 ambient_light_energy = 0.0
+ssao_enabled = true
+ssao_intensity = 3.63
 fog_mode = 1
 fog_light_color = Color(0.570847, 0.532471, 0.606662, 1)
 fog_density = 1.066

@@ -1,0 +1,127 @@
+[gd_scene load_steps=18 format=3 uid="uid://dunvlyen88ju"]
+
+[ext_resource type="Script" uid="uid://loj6w4d64vgk" path="res://scenes/maps/universal/puff_plant_trampoline.gd" id="1_1nyg6"]
+[ext_resource type="Script" uid="uid://bce5edsqe0be3" path="res://scenes/maps/universal/bounce_pad.gd" id="1_pywcp"]
+[ext_resource type="AudioStream" uid="uid://b1l75bwdsdpmd" path="res://audio/bounce.wav" id="2_aeubb"]
+[ext_resource type="PackedScene" uid="uid://c4w5t05365gfn" path="res://scenes/maps/universal/puffplant.glb" id="3_aeubb"]
+[ext_resource type="Texture2D" uid="uid://brnwjg2usyhod" path="res://textures/circle-billboard.png" id="4_jl0x8"]
+
+[sub_resource type="Animation" id="Animation_jl0x8"]
+resource_name = "active"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("puffplant:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.75, 1.25, 0.75), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1nyg6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("puffplant:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1nyg6"]
+_data = {
+&"RESET": SubResource("Animation_1nyg6"),
+&"active": SubResource("Animation_jl0x8")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w16va"]
+size = Vector3(2, 1, 2)
+
+[sub_resource type="Curve" id="Curve_1nyg6"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_85m4p"]
+curve = SubResource("Curve_1nyg6")
+
+[sub_resource type="Curve" id="Curve_jl0x8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1nyg6"]
+curve = SubResource("Curve_jl0x8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jl0x8"]
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3(0, 20, 0)
+scale_min = 0.2
+scale_max = 0.4
+scale_curve = SubResource("CurveTexture_1nyg6")
+alpha_curve = SubResource("CurveTexture_85m4p")
+hue_variation_min = -0.1
+hue_variation_max = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1nyg6"]
+transparency = 1
+shading_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("4_jl0x8")
+disable_receive_shadows = true
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_85m4p"]
+material = SubResource("StandardMaterial3D_1nyg6")
+orientation = 2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1nyg6"]
+radius = 0.851897
+
+[node name="PuffPlant" type="StaticBody3D"]
+script = ExtResource("1_1nyg6")
+
+[node name="trampoline" type="Node3D" parent="." node_paths=PackedStringArray("area")]
+script = ExtResource("1_pywcp")
+area = NodePath("../Area3D")
+bounce_sound = ExtResource("2_aeubb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1nyg6")
+}
+autoplay = "active"
+speed_scale = 0.5
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_w16va")
+
+[node name="puffplant" parent="." instance=ExtResource("3_aeubb")]
+
+[node name="Timer" type="Timer" parent="puffplant"]
+wait_time = 0.1
+autostart = true
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28908, 0)
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_jl0x8")
+draw_pass_1 = SubResource("PlaneMesh_85m4p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.400295, 0)
+shape = SubResource("SphereShape3D_1nyg6")
+
+[connection signal="timeout" from="puffplant/Timer" to="AnimationPlayer" method="advance" binds= [0.2]]

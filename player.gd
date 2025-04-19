@@ -1,7 +1,7 @@
 extends CharacterBody3D
 class_name Player
 
-const DASH_TIME_SECONDS = 0.15
+const DASH_TIME_SECONDS = 0.025
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const MOUSE_SENS = Vector2(.00075,.00075)
@@ -139,9 +139,14 @@ func _unhandled_input(event: InputEvent) -> void:
     _in_dash = true
     _fall_time = 0.0
     var projected_dir = Plane(Vector3.UP).project(velocity.normalized())
+    velocity.y = 0.0
     _dash_velocity = velocity + (projected_dir * 25.0)
     get_tree().create_timer(DASH_TIME_SECONDS).timeout.connect(func(): _in_dash = false)
     camera.punch_fov(200.0)
+    AudioManager.playd({
+      "stream": preload("res://audio/player-dash.wav"),
+      "pitch_variance": 0.1
+    })
     #_cvel += projected_dir*5.0
 
 func _process(delta: float) -> void:
@@ -153,6 +158,8 @@ func _process(delta: float) -> void:
   
   DebugDraw2D.set_text("camera pos data", cbonepos)
   DebugDraw2D.set_text("camera rot data", cbonerot)
+  DebugDraw2D.set_text("velocity", velocity )
+  DebugDraw2D.set_text("speed", Plane(Vector3.UP).project(velocity).length() )
   
   input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
   #_sprint_held = Input.is_action_pressed("sprint")
@@ -267,8 +274,10 @@ func _physics_process(delta: float) -> void:
   var accel = ACCEL
       
   if not is_on_floor():
-    accel = 0.5
-    decel = 0.3
+    accel = 0.3
+    decel = 0.05
+    if velocity.y < 0.0:
+      speed = min(speed + abs(velocity.y)*0.2, SPEED * 2.0)
   
   var direction = camera.global_transform.basis.x * input_dir.x
   direction += camera.global_transform.basis.z * input_dir.y

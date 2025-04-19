@@ -9,7 +9,7 @@ func _ready() -> void:
   if death_plane:
     death_plane.collision_mask = 2
     death_plane.body_entered.connect(func(body):
-      if body == Find.player:
+      if body == Find.player and not Find.in_room_load:
         Find.player.reset_to_floor()
         Find.player.health.modify({
           "amount": 1

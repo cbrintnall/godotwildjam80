@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://iu0l0iacc56u"]
+[gd_scene load_steps=13 format=3 uid="uid://iu0l0iacc56u"]
 
 [ext_resource type="Script" uid="uid://bb8fcpbv25jky" path="res://scenes/test_area.gd" id="1_a0f05"]
 [ext_resource type="PackedScene" uid="uid://8s7gnkn1nq68" path="res://scenes/player/player.tscn" id="1_yldxj"]
+[ext_resource type="PackedScene" uid="uid://qnd4clqxji7c" path="res://scenes/maps/universal/scenes/test_trampoline.tscn" id="2_764nf"]
 [ext_resource type="Texture2D" uid="uid://c8ejxpp0ngwoc" path="res://addons/kenney_prototype_textures/dark/texture_01.png" id="2_f0p7x"]
 [ext_resource type="Environment" uid="uid://b35w0orshbuju" path="res://data/first_person_environment.tres" id="2_w16va"]
 [ext_resource type="Texture2D" uid="uid://b0ttbsoi6qgwt" path="res://addons/kenney_prototype_textures/dark/texture_06.png" id="3_vtm10"]
@@ -23,6 +24,9 @@ uv1_triplanar = true
 
 [node name="TestArea" type="Node3D"]
 script = ExtResource("1_a0f05")
+
+[node name="TestTrampoline" parent="." instance=ExtResource("2_764nf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 5)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_w16va")

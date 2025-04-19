@@ -2,9 +2,33 @@
 extends EditorScenePostImport
 
 func _post_import(scene: Node) -> Object:
+  _ensure_level_data(scene)
   _each_node(scene)
   # Modify the contents of the scene upon import.
   return scene # Return the modified root node when you're done.
+
+func _ensure_level_data(scene: Node):
+  if not get_source_file().contains("raw"):
+    return
+  
+  var path = "res://scenes/maps/%s" % scene.name
+  if not DirAccess.dir_exists_absolute(path):
+    var err = DirAccess.make_dir_absolute(path)
+  
+  var file = "%s/%s.tscn" % [path,scene.name]
+  if not FileAccess.file_exists(file):
+    var room_scene = PackedScene.new()
+    var room = Room.new()
+    var level = load(get_source_file()).instantiate()
+    room.add_child(level)
+    level.owner = room
+    room_scene.pack(room)
+    ResourceSaver.save(room_scene,file)
+    var keys = load("res://data/room_keys.json").data
+    keys[scene.name] = file
+    var f = FileAccess.open("res://data/room_keys.json", FileAccess.WRITE)
+    f.store_string(JSON.stringify(keys))
+    print("created scene for non-existent level %s" % file)
 
 func _each_node(node: Node):
   if node == null:

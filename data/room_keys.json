@@ -1,5 +1,1 @@
-{
-  "intro": "res://scenes/maps/intro/intro.tscn",
-  "dash_room": "res://scenes/maps/dash_room/dash_room.tscn",
-  "room_two": "res://scenes/maps/room_two/room_two.tscn"
-}
+{"dash_room":"res://scenes/maps/dash_room/dash_room.tscn","into_cave":"res://scenes/maps/into_cave/into_cave.tscn","intro":"res://scenes/maps/intro/intro.tscn","puffplant":"res://scenes/maps/puffplant/puffplant.tscn","room_two":"res://scenes/maps/room_two/room_two.tscn"}

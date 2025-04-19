@@ -1,10 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://csj43ecm865kg"]
+[gd_scene load_steps=16 format=3 uid="uid://csj43ecm865kg"]
 
 [ext_resource type="PackedScene" uid="uid://bdu8fworqnco6" path="res://scenes/maps/dash_room/dash_room.blend" id="1_62owa"]
 [ext_resource type="Script" uid="uid://cn16bfgyoripu" path="res://scenes/maps/room.gd" id="1_ddvv7"]
 [ext_resource type="PackedScene" uid="uid://bu6h0qeg715c6" path="res://scenes/player/weapons/revolver/revolver.tscn" id="3_dx27s"]
 [ext_resource type="Script" uid="uid://cnq84vt6qcf1y" path="res://scenes/maps/weapon_pickup.gd" id="3_qumwp"]
 [ext_resource type="Script" uid="uid://dpld21m4db2q3" path="res://mechanics/interact/interactable.gd" id="4_48nev"]
+[ext_resource type="PackedScene" uid="uid://dunvlyen88ju" path="res://scenes/maps/universal/scenes/puff_plant_trampoline.tscn" id="6_uc034"]
+[ext_resource type="PackedScene" uid="uid://dorv14osa8lvx" path="res://scenes/maps/universal/scenes/cauliplant.tscn" id="7_qktoc"]
+[ext_resource type="PackedScene" uid="uid://dse6k78j3sy48" path="res://scenes/maps/universal/scenes/crystala.tscn" id="8_qktoc"]
+[ext_resource type="PackedScene" uid="uid://d3eemwxn61svt" path="res://scenes/maps/universal/scenes/crystalb.tscn" id="9_xwesm"]
+[ext_resource type="AudioStream" uid="uid://cquuw0rsx4dvm" path="res://audio/ambience/crystal-hum.ogg" id="10_uc034"]
 
 [sub_resource type="Environment" id="Environment_ddvv7"]
 fog_enabled = true
@@ -60,3 +65,100 @@ metadata/_custom_type_script = "uid://dpld21m4db2q3"
 shape = SubResource("SphereShape3D_48nev")
 
 [node name="Revolver" parent="RevolverPickup" instance=ExtResource("3_dx27s")]
+
+[node name="PuffPlant" parent="." instance=ExtResource("6_uc034")]
+transform = Transform3D(0.900683, 0, -0.434477, 0, 1, 0, 0.434477, 0, 0.900683, -79.901, 4.87511, 9.75527)
+
+[node name="Cauliplant" parent="." instance=ExtResource("7_qktoc")]
+transform = Transform3D(0.999125, -0.0418233, 0, 0.0377846, 0.902642, -0.42873, 0.0179309, 0.428355, 0.903433, -60.6593, 6.56712, -4.12256)
+
+[node name="Cauliplant2" parent="." instance=ExtResource("7_qktoc")]
+transform = Transform3D(0.999125, -0.0418128, -0.000940833, 0.0377846, 0.912058, -0.408316, 0.0179309, 0.407924, 0.91284, -63.7794, 5.00357, -1.6377)
+
+[node name="Cauliplant3" parent="." instance=ExtResource("7_qktoc")]
+transform = Transform3D(0.999125, -0.0410662, 0.00792222, 0.0377846, 0.80509, -0.591948, 0.0179309, 0.591729, 0.805937, -63.2664, 6.52336, -4.50983)
+
+[node name="Cauliplant4" parent="." instance=ExtResource("7_qktoc")]
+transform = Transform3D(1, 0, 0, 0, 0.998552, 0.0538, 0, -0.0538, 0.998552, -37.0633, 5.24231, 5.08004)
+
+[node name="Crystala" parent="." instance=ExtResource("8_qktoc")]
+transform = Transform3D(0.83266, -0.553784, 0, 0.553784, 0.83266, 0, 0, 0, 1, -113.19, 4.71007, -12.2184)
+
+[node name="Crystala11" parent="." instance=ExtResource("8_qktoc")]
+transform = Transform3D(0.83266, -0.553784, 0, 0.553784, 0.83266, 0, 0, 0, 1, -97.2792, 4.71007, -10.6841)
+
+[node name="Crystala12" parent="." instance=ExtResource("8_qktoc")]
+transform = Transform3D(0.83266, -0.553784, 0, 0.553784, 0.83266, 0, 0, 0, 1, -96.5567, 4.71007, -9.62863)
+
+[node name="Crystala2" parent="." instance=ExtResource("8_qktoc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104.499, 5.4128, 6.69423)
+
+[node name="Crystala4" parent="." instance=ExtResource("8_qktoc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -118.014, 5.76532, -0.288302)
+
+[node name="Crystala5" parent="." instance=ExtResource("8_qktoc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -112.989, 5.76532, -13.6933)
+
+[node name="Crystala6" parent="." instance=ExtResource("8_qktoc")]
+transform = Transform3D(1, 0, 0, 0, -0.162809, -0.986658, 0, 0.986658, -0.162809, -106.088, 1.60795, -13.4889)
+
+[node name="Crystala22" parent="." instance=ExtResource("8_qktoc")]
+transform = Transform3D(-0.25575, -0.953844, 0.157395, 0, -0.162809, -0.986658, 0.966743, -0.252337, 0.0416384, -100.15, 1.60795, -5.27629)
+
+[node name="Crystala7" parent="." instance=ExtResource("8_qktoc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -96.6199, 4.31865, -10.8476)
+
+[node name="Crystala8" parent="." instance=ExtResource("8_qktoc")]
+transform = Transform3D(0.352479, 0.93582, 0, -0.93582, 0.352479, 0, 0, 0, 1, -94.489, 2.37694, -3.11306)
+
+[node name="Crystala9" parent="." instance=ExtResource("8_qktoc")]
+transform = Transform3D(0.352479, 0.93582, 0, -0.93582, 0.352479, 0, 0, 0, 1, -94.489, 3.22265, -4.23825)
+
+[node name="Crystala10" parent="." instance=ExtResource("8_qktoc")]
+transform = Transform3D(0.352479, 0.93582, 0, -0.93582, 0.352479, 0, 0, 0, 1, -94.489, 3.63021, -3.13977)
+
+[node name="Crystala3" parent="." instance=ExtResource("8_qktoc")]
+transform = Transform3D(1.78, 0, 0, 0, 1.78, 0, 0, 0, 1.78, -114.305, 5.33097, 4.32753)
+
+[node name="Crystala19" parent="." instance=ExtResource("8_qktoc")]
+transform = Transform3D(2.16583, 0.544717, 1.83427, -1.31665, 2.43451, 0.831677, -1.38842, -1.45895, 2.07264, -112.968, 3.81749, 4.56761)
+
+[node name="Crystala21" parent="." instance=ExtResource("8_qktoc")]
+transform = Transform3D(4.33714, 3.51089, -3.41093, -2.97955, 5.50924, 1.88207, 3.8837, 0.305849, 5.25309, -125.439, 3.77597, -7.48476)
+
+[node name="Crystala20" parent="." instance=ExtResource("8_qktoc")]
+transform = Transform3D(2.16583, 0.544717, 1.83427, -0.474601, 2.83678, -0.282039, -1.85365, -0.0898613, 2.2154, -116.457, 3.81749, 6.7601)
+
+[node name="Crystala13" parent="." instance=ExtResource("9_xwesm")]
+transform = Transform3D(5.89771, -2.43411, -2.93984, 2.67716, 6.49488, -0.00685505, 2.72037, -1.11459, 6.38027, -116.776, -2.33076, 10.6293)
+
+[node name="Crystala14" parent="." instance=ExtResource("9_xwesm")]
+transform = Transform3D(0.923799, -0.382877, 0, 0.382877, 0.923799, 0, 0, 0, 1, -117.392, 4.8071, -5.73734)
+
+[node name="Crystala15" parent="." instance=ExtResource("9_xwesm")]
+transform = Transform3D(0.923799, -0.382877, 0, 0.382877, 0.923799, 0, 0, 0, 1, -99.3407, 4.8071, -3.00472)
+
+[node name="Crystala16" parent="." instance=ExtResource("9_xwesm")]
+transform = Transform3D(0.611959, -0.253632, 0.749118, 0.382877, 0.923799, 0, -0.692034, 0.28682, 0.662437, -99.3247, 4.8071, -2.37465)
+
+[node name="Crystala17" parent="." instance=ExtResource("9_xwesm")]
+transform = Transform3D(-0.801184, 0.332058, 0.497837, 0.382877, 0.923799, 1.97422e-08, -0.459902, 0.19061, -0.867271, -98.9841, 4.8071, -2.91562)
+
+[node name="Crystala18" parent="." instance=ExtResource("9_xwesm")]
+transform = Transform3D(-0.801184, 0.332058, 0.497837, 0.382877, 0.923799, 1.97422e-08, -0.459902, 0.19061, -0.867271, -97.694, 4.8071, -10.751)
+
+[node name="PurpleGlow" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -108.472, 10.1537, -3.45278)
+light_color = Color(0.766609, 0.608239, 0.966967, 1)
+light_energy = 16.0
+light_indirect_energy = 16.0
+omni_range = 98.2894
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -108.472, -0.720206, -3.45278)
+stream = ExtResource("10_uc034")
+max_db = -8.0
+autoplay = true
+max_distance = 130.0
+
+[editable path="dash_room"]

@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brnwjg2usyhod"
-path.s3tc="res://.godot/imported/circle-billboard.png-443e9b498fb388c8ae5cfe29593e301a.s3tc.ctex"
+uid="uid://dxn8vflvlkfl0"
+path.s3tc="res://.godot/imported/puffplant_baba32-1x.png-3b46e7d8e6e6089a09ace914ba80f48c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "81580153c4d85e055ba791090a8c4344"
+}
 
 [deps]
 
-source_file="res://textures/circle-billboard.png"
-dest_files=["res://.godot/imported/circle-billboard.png-443e9b498fb388c8ae5cfe29593e301a.s3tc.ctex"]
+source_file="res://scenes/maps/universal/puffplant_baba32-1x.png"
+dest_files=["res://.godot/imported/puffplant_baba32-1x.png-3b46e7d8e6e6089a09ace914ba80f48c.s3tc.ctex"]
 
 [params]
 

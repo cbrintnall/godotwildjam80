@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://qnd4clqxji7c"]
+
+[ext_resource type="Script" uid="uid://bce5edsqe0be3" path="res://scenes/maps/universal/bounce_pad.gd" id="1_ivbgx"]
+[ext_resource type="AudioStream" uid="uid://b1l75bwdsdpmd" path="res://audio/bounce.wav" id="2_bjdih"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w16va"]
+size = Vector3(2, 1, 2)
+
+[node name="TestTrampoline" type="Node3D" node_paths=PackedStringArray("area")]
+script = ExtResource("1_ivbgx")
+area = NodePath("Area3D")
+bounce_sound = ExtResource("2_bjdih")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_w16va")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+size = Vector3(2, 1, 2)
