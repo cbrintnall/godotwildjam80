@@ -13,7 +13,7 @@ func _ready():
   interactable.interacted.connect(_on_interact)
   interactable.prompt = "PICKUP"
 
-func _on_interact(body):
+func _on_interact(_body):
   AudioManager.playd({
     "stream": grab_sound,
     "location": global_position,

@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" uid="uid://dt2lc5cogov06" path="res://player.gd" id="1_8afob"]
 [ext_resource type="PackedScene" uid="uid://2klosqoxmvv0" path="res://scenes/player/player.glb" id="2_dovo2"]
-[ext_resource type="Script" uid="uid://bmyalhnpkv7bd" path="res://scenes/inventory.gd" id="2_je7p5"]
 [ext_resource type="Texture2D" uid="uid://bao7vub78bg8l" path="res://textures/WhiteCrosshairs/crosshair057.png" id="2_lvxji"]
 [ext_resource type="Script" uid="uid://641ueqwt1hr" path="res://scenes/player/player_ui.gd" id="2_qek5x"]
 [ext_resource type="Script" uid="uid://bg53qpxsynngb" path="res://scenes/player/player_weapon_manager.gd" id="3_fm80t"]
 [ext_resource type="PackedScene" uid="uid://c6wrht4tpfm83" path="res://mechanics/interact/interact_ray.tscn" id="3_p47bc"]
 [ext_resource type="Script" uid="uid://bykijvx7m61g5" path="res://scenes/player/game_cam.gd" id="4_5gtgg"]
-[ext_resource type="Shader" uid="uid://dowttt205lpr3" path="res://shaders/vignette.gdshader" id="7_h17s1"]
+[ext_resource type="PackedScene" uid="uid://dd1mdkd5krr5j" path="res://mechanics/inventory/inventory.tscn" id="6_5gtgg"]
+[ext_resource type="Shader" path="res://shaders/vignette.gdshader" id="7_h17s1"]
 [ext_resource type="Script" uid="uid://bllj3t0nrr137" path="res://scenes/health.gd" id="9_5gtgg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0owmy"]
@@ -51,9 +51,6 @@ physics_interpolation_mode = 1
 collision_layer = 2
 script = ExtResource("1_8afob")
 jump_height = 6.0
-
-[node name="Inventory" type="Node" parent="."]
-script = ExtResource("2_je7p5")
 
 [node name="PlayerWeaponManager" type="Node" parent="."]
 script = ExtResource("3_fm80t")
@@ -125,6 +122,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="Inventory" parent="PlayerUI" instance=ExtResource("6_5gtgg")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

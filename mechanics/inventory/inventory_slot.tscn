@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpmuork38qnss"]
+
+[ext_resource type="Script" uid="uid://2t7ydnrals46" path="res://mechanics/inventory/inventory_slot.gd" id="1_8mqye"]
+
+[node name="InventorySlot" type="Button" node_paths=PackedStringArray("texture_rect")]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_8mqye")
+texture_rect = NodePath("TextureRect")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

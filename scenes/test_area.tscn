@@ -1,6 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://iu0l0iacc56u"]
+[gd_scene load_steps=16 format=3 uid="uid://iu0l0iacc56u"]
 
-[ext_resource type="Script" uid="uid://cn16bfgyoripu" path="res://scenes/maps/room.gd" id="1_hm1ru"]
+[ext_resource type="Script" path="res://scenes/maps/room.gd" id="1_hm1ru"]
 [ext_resource type="PackedScene" uid="uid://qnd4clqxji7c" path="res://scenes/maps/universal/scenes/test_trampoline.tscn" id="2_764nf"]
 [ext_resource type="Texture2D" uid="uid://c8ejxpp0ngwoc" path="res://addons/kenney_prototype_textures/dark/texture_01.png" id="2_f0p7x"]
 [ext_resource type="Environment" uid="uid://b35w0orshbuju" path="res://data/first_person_environment.tres" id="2_w16va"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://b2usa4ukmcnj" path="res://scenes/maps/universal/scenes/weapon_pickup.tscn" id="10_e0uvj"]
 [ext_resource type="PackedScene" uid="uid://bukwnu4wymphr" path="res://scenes/maps/universal/scenes/breakables/breakable_crystal.tscn" id="11_e0uvj"]
 [ext_resource type="PackedScene" uid="uid://bu6h0qeg715c6" path="res://scenes/player/weapons/revolver/revolver.tscn" id="11_erwy7"]
+[ext_resource type="PackedScene" uid="uid://dorv14osa8lvx" path="res://scenes/maps/universal/scenes/cauliplant.tscn" id="12_erwy7"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_vtm10"]
 vertices = PackedVector3Array(3, 3.5, -18.7906, 3, 3.5, -17.5406, 7, 3.5, -17.5406, 7, 3.5, -18.7906, 10.5, 3.5, -18.7906, 10.5, 3.5, -17.5406, 14.75, 3.5, -17.5406, 14.75, 3.5, -18.7906, -12.75, 0.5, -5.0406, -9, 0.5, -4.7906, -8.75, 0.5, -6.5406, -12.75, 0.5, -16.2906, -3, 0.5, -6.5406, -2.75, 0.5, -4.5406, 2, 0.5, -4.5406, 2.25, 0.5, -6.5406, 2, 0.5, -12.7906, 2, 0.5, -16.2906, 4.25, 0.5, -6.5406, 4.25, 0.5, -12.5406, 3, 3.5, -16.2906, 3, 3.5, -13.7906, 7, 3.5, -13.7906, 7, 3.5, -16.2906, 3.25, 0.5, -16.2906, 3.25, 0.5, -13.7906, 7, 0.5, -13.7906, 7, 0.5, -16.2906, 9.5, 0.5, -16.2906, 8.25, 0.5, -16.2906, 8.25, 0.5, -13.0406, 9.5, 0.5, -12.7906, 8, 0.5, -6.5406, 7.75, 0.5, -12.5406, 8.25, 0.5, -6.0406, 10, 0.5, -12.5406, 10.5, 3.5, -16.2906, 10.5, 3.5, -13.7906, 14.75, 3.5, -13.7906, 14.75, 3.5, -16.2906, 10.75, 0.5, -16.2906, 10.75, 0.5, -13.7906, 14.5, 0.5, -13.7906, 14.5, 0.5, -16.2906, 15.5, 0.5, -12.5406, 8.25, 0.5, -1.0406, 35.5, 0.5, -0.7906, 35.5, 0.5, -16.2906, 15.75, 0.5, -16.2906, -8, 3.5, -5.5406, -8, 3.5, -0.2906, -4, 3.5, -0.2906, -4, 3.5, -5.5406, 3, 3.5, -5.5406, 3, 3.5, -0.2906, 7, 3.5, -0.2906, 7, 3.5, -5.5406, -7.75, 0.5, -5.2906, -7.75, 0.5, -0.5406, -4, 0.5, -0.5406, -4, 0.5, -5.2906, 3.25, 0.5, -5.2906, 3.25, 0.5, -0.5406, 7, 0.5, -0.5406, 7, 0.5, -5.2906, -9, 0.5, 0.4594, -12.75, 0.5, 10.4594, -4.75, 0.5, 10.4594, -4.75, 0.5, 0.7094, 2, 0.5, 0.4594, -2.75, 0.5, 0.4594, -3, 0.5, 10.4594, 2.5, 0.5, 0.7094, -2.75, 0.5, 10.9594, 8, 0.5, 0.7094, 6.5, 0.5, 0.7094, 6.75, 0.5, 16.4594, 35.5, 0.5, 16.4594, -2.75, 0.5, 16.4594, -12.75, 1.5, 11.4594, -12.75, 1.5, 16.4594, -9, 1.5, 16.4594, -9, 1.5, 11.4594, -8, 3.5, 11.4594, -8, 3.5, 16.4594, -4, 3.5, 16.4594, -4, 3.5, 11.4594, -7.75, 0.5, 11.7094, -7.75, 0.5, 16.4594, -4, 0.5, 16.4594, -4, 0.5, 11.7094)
@@ -123,5 +124,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.36542, -4.76837e-07, 0.3981
 
 [node name="BreakableCrystal" parent="." instance=ExtResource("11_e0uvj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.71385, -0.000276268, -4.48155)
+
+[node name="Cauliplant" parent="." instance=ExtResource("12_erwy7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -2)
 
 [connection signal="ready" from="." to="." method="_on_ready"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://t6pt1l2ytd27"]
+[gd_scene load_steps=22 format=3 uid="uid://t6pt1l2ytd27"]
 
 [ext_resource type="Script" uid="uid://d1upo6mxfi727" path="res://scenes/enemy/enemy.gd" id="1_7dv1t"]
 [ext_resource type="Script" uid="uid://bllj3t0nrr137" path="res://scenes/health.gd" id="2_glhb6"]
@@ -269,19 +269,14 @@ animation = &"twitch"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_igu33"]
 animation = &"RESET"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ev3hl"]
-animation = &"twitch"
-
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_gkg0x"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_nw6e0"]
-graph_offset = Vector2(-627.521, 84.8895)
+graph_offset = Vector2(-594.648, -104.738)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_glhb6")
 nodes/Add2/position = Vector2(413.333, 253.333)
 "nodes/Add2 3/node" = SubResource("AnimationNodeAdd2_vpqem")
 "nodes/Add2 3/position" = Vector2(240, 253.333)
-nodes/Animation/node = SubResource("AnimationNodeAnimation_ev3hl")
-nodes/Animation/position = Vector2(53.3333, -106.667)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_tcmtr")
 "nodes/Animation 2/position" = Vector2(240, 520)
 "nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_srpgu")
