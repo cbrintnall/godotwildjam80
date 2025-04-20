@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://weuplx6uxwmj"]
+
+[ext_resource type="Texture2D" uid="uid://b8lclgwh8ebat" path="res://textures/baba32-1x.png" id="1_w6n6r"]
+
+[resource]
+resource_name = "OpaqueCull"
+cull_mode = 2
+shading_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_w6n6r")
+metallic_specular = 0.0

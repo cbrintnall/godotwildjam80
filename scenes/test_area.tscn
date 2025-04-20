@@ -98,10 +98,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.11514, -4.76837e-07, 13.626
 [node name="Enemy3" parent="." instance=ExtResource("5_xnrqy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5608, -4.76837e-07, 15.1369)
 
-[node name="DialogueNpc" parent="." instance=ExtResource("5_3fd14")]
-transform = Transform3D(0.440503, 0, -0.897751, 0, 1, 0, 0.897751, 0, 0.440503, 1.71996, -1.7053e-13, 0.531838)
-script = null
-
 [node name="Enemy4" parent="." instance=ExtResource("7_576i8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.29673, 0, 5.47472)
 
@@ -120,5 +116,8 @@ weapon = NodePath("RevolverScalar/Revolver")
 
 [node name="Node3D" type="Node3D" parent="." groups=["Enemies", "Spawn"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.93457, 4.01859, -3.07611)
+
+[node name="DialogueNpc" parent="." instance=ExtResource("5_3fd14")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.36542, -4.76837e-07, 0.398141)
 
 [connection signal="ready" from="." to="." method="_on_ready"]

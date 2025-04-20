@@ -9,8 +9,8 @@ class_name Weapon
 @export var crystal_mesh: Node3D
 
 var current_ammo := 0
-#var bullet_ref := preload("res://data/bullets/default.tres")
-var bullet_ref := preload("res://data/bullets/tracking.tres")
+var bullet_ref := preload("res://data/bullets/default.tres")
+#var bullet_ref := preload("res://data/bullets/tracking.tres")
 
 var _last_reload_time: float
 var _normalized_ammo: float:
