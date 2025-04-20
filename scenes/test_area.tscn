@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://iu0l0iacc56u"]
+[gd_scene load_steps=15 format=3 uid="uid://iu0l0iacc56u"]
 
 [ext_resource type="Script" uid="uid://cn16bfgyoripu" path="res://scenes/maps/room.gd" id="1_hm1ru"]
 [ext_resource type="PackedScene" uid="uid://qnd4clqxji7c" path="res://scenes/maps/universal/scenes/test_trampoline.tscn" id="2_764nf"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://buw655oxcjh6y" path="res://scenes/enemy/enemy.tscn" id="5_xnrqy"]
 [ext_resource type="PackedScene" uid="uid://t6pt1l2ytd27" path="res://scenes/enemy/bug/bug.tscn" id="7_576i8"]
 [ext_resource type="PackedScene" uid="uid://b2usa4ukmcnj" path="res://scenes/maps/universal/scenes/weapon_pickup.tscn" id="10_e0uvj"]
+[ext_resource type="PackedScene" uid="uid://bukwnu4wymphr" path="res://scenes/maps/universal/scenes/breakables/breakable_crystal.tscn" id="11_e0uvj"]
 [ext_resource type="PackedScene" uid="uid://bu6h0qeg715c6" path="res://scenes/player/weapons/revolver/revolver.tscn" id="11_erwy7"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_vtm10"]
@@ -119,5 +120,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.93457, 4.01859, -3.07611)
 
 [node name="DialogueNpc" parent="." instance=ExtResource("5_3fd14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.36542, -4.76837e-07, 0.398141)
+
+[node name="BreakableCrystal" parent="." instance=ExtResource("11_e0uvj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.71385, -0.000276268, -4.48155)
 
 [connection signal="ready" from="." to="." method="_on_ready"]

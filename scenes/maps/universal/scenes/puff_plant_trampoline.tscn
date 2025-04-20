@@ -6,6 +6,21 @@
 [ext_resource type="PackedScene" uid="uid://c4w5t05365gfn" path="res://scenes/maps/universal/puffplant.glb" id="3_aeubb"]
 [ext_resource type="Texture2D" uid="uid://brnwjg2usyhod" path="res://textures/circle-billboard.png" id="4_jl0x8"]
 
+[sub_resource type="Animation" id="Animation_1nyg6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("puffplant:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_jl0x8"]
 resource_name = "active"
 loop_mode = 1
@@ -22,21 +37,6 @@ tracks/0/keys = {
 "values": [Vector3(1, 1, 1), Vector3(0.75, 1.25, 0.75), Vector3(1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_1nyg6"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("puffplant:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1, 1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1nyg6"]
 _data = {
 &"RESET": SubResource("Animation_1nyg6"),
@@ -44,7 +44,7 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w16va"]
-size = Vector3(2, 1, 2)
+size = Vector3(2, 2.84961, 1.88477)
 
 [sub_resource type="Curve" id="Curve_1nyg6"]
 _data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]

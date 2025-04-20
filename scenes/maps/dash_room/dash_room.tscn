@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://csj43ecm865kg"]
+[gd_scene load_steps=15 format=3 uid="uid://csj43ecm865kg"]
 
 [ext_resource type="PackedScene" uid="uid://bdu8fworqnco6" path="res://scenes/maps/dash_room/dash_room.blend" id="1_62owa"]
 [ext_resource type="Script" uid="uid://cn16bfgyoripu" path="res://scenes/maps/room.gd" id="1_ddvv7"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dorv14osa8lvx" path="res://scenes/maps/universal/scenes/cauliplant.tscn" id="7_qktoc"]
 [ext_resource type="PackedScene" uid="uid://dse6k78j3sy48" path="res://scenes/maps/universal/scenes/crystala.tscn" id="8_qktoc"]
 [ext_resource type="PackedScene" uid="uid://d3eemwxn61svt" path="res://scenes/maps/universal/scenes/crystalb.tscn" id="9_xwesm"]
+[ext_resource type="PackedScene" uid="uid://bukwnu4wymphr" path="res://scenes/maps/universal/scenes/breakables/breakable_crystal.tscn" id="10_o7r3e"]
 [ext_resource type="AudioStream" uid="uid://cquuw0rsx4dvm" path="res://audio/ambience/crystal-hum.ogg" id="10_uc034"]
 
 [sub_resource type="Environment" id="Environment_ddvv7"]
@@ -147,5 +148,14 @@ stream = ExtResource("10_uc034")
 max_db = -8.0
 autoplay = true
 max_distance = 130.0
+
+[node name="BreakableCrystal" parent="." instance=ExtResource("10_o7r3e")]
+transform = Transform3D(1, 0, 0, 0, -0.0592541, 0.998243, 0, -0.998243, -0.0592541, -62.8664, 10.6288, 11.2288)
+
+[node name="BreakableCrystal2" parent="." instance=ExtResource("10_o7r3e")]
+transform = Transform3D(0.0384227, 0, -0.999262, 0.997506, -0.0592541, 0.0383552, -0.0592103, -0.998243, -0.0022767, -64.388, 11.9963, 10.9623)
+
+[node name="BreakableCrystal3" parent="." instance=ExtResource("10_o7r3e")]
+transform = Transform3D(0.0384227, 0.393234, -0.918635, 0.997506, -0.0695668, 0.0119426, -0.0592103, -0.916803, -0.394926, -64.0305, 8.74981, 11.0613)
 
 [editable path="dash_room"]

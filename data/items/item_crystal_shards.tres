@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ItemRef" load_steps=2 format=3 uid="uid://dpsqregeiwgfj"]
+
+[ext_resource type="Script" uid="uid://t5tcg7ifyskh" path="res://scenes/data/item_ref.gd" id="1_1ckmo"]
+
+[resource]
+script = ExtResource("1_1ckmo")
+display_name = "Crystal Shards"
+metadata/_custom_type_script = "uid://t5tcg7ifyskh"
